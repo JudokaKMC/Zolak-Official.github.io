@@ -1,33 +1,42 @@
-// --- Функция для переключения видимости контента (для кнопок "Подробнее"/"Свернуть") ---
-function toggleContent(contentId, button) {
-    const content = document.getElementById(contentId);
-    if (content) {
-        const isExpanded = content.style.display === "block"; // Проверяем, развернут ли уже контент
+// --- Функция для переключения видимости контента (кнопки "Подробнее"/"Свернуть") ---
+function toggleContent(button) {
+    const targetId = button.getAttribute('data-target'); // Получаем ID блока из атрибута data-target
+    const content = document.getElementById(targetId);
 
-        // --- Сначала сворачиваем все остальные открытые блоки ---
-        document.querySelectorAll('.collapsible-content').forEach(item => {
-            // Проверяем, не является ли текущий блок тем, который мы пытаемся переключить
-            // и развернут ли он
-            if (item !== content && item.style.display === "block") {
-                item.style.display = "none"; // Скрываем контент
-                // Находим соответствующую кнопку для этого блока
-                // Кнопка должна быть *перед* блоком контента в DOM
-                const siblingButton = item.previousElementSibling; 
-                if (siblingButton && siblingButton.classList.contains('toggle-button')) {
-                    siblingButton.textContent = "Подробнее"; // Меняем текст кнопки обратно
+    if (content) {
+        const section = button.closest('.collapsible-section'); // Находим родительский блок секции
+        const isExpanded = section.classList.contains('expanded'); // Проверяем, есть ли класс 'expanded'
+
+        // --- Сворачиваем все остальные блоки ---
+        document.querySelectorAll('.collapsible-section').forEach(item => {
+            if (item !== section && item.classList.contains('expanded')) {
+                item.classList.remove('expanded');
+                const otherButton = item.querySelector('.toggle-button');
+                if (otherButton) {
+                    otherButton.setAttribute('aria-expanded', 'false'); // Обновляем ARIA
+                    // Можно также менять текст кнопки, если он есть
+                    // if (otherButton.querySelector('span')) otherButton.querySelector('span').textContent = "Подробнее";
+                }
+                const otherContent = item.querySelector('.collapsible-content');
+                if (otherContent) {
+                    otherContent.style.display = "none";
                 }
             }
         });
 
-        // --- Теперь переключаем состояние текущего блока ---
+        // --- Переключаем текущий блок ---
         if (isExpanded) {
             // Если был развернут, сворачиваем
+            section.classList.remove('expanded');
             content.style.display = "none";
-            button.textContent = "Подробнее"; // Меняем текст кнопки на "Подробнее"
+            button.setAttribute('aria-expanded', 'false'); // Обновляем ARIA
+            // if (button.querySelector('span')) button.querySelector('span').textContent = "Подробнее";
         } else {
             // Если был свернут, разворачиваем
+            section.classList.add('expanded');
             content.style.display = "block";
-            button.textContent = "Свернуть"; // Меняем текст кнопки на "Свернуть"
+            button.setAttribute('aria-expanded', 'true'); // Обновляем ARIA
+            // if (button.querySelector('span')) button.querySelector('span').textContent = "Свернуть";
         }
     }
 }
@@ -41,7 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Обработчик клика по кнопке меню (гамбургеру)
         menuToggle.addEventListener('click', () => {
             navList.classList.toggle('active'); // Переключаем класс 'active' для показа/скрытия меню
-            menuToggle.classList.toggle('open'); // Переключаем класс для кнопки (для изменения вида, например, на крестик)
+            menuToggle.classList.toggle('open'); // Переключаем класс для кнопки (для изменения вида)
+            
+            // Обновляем ARIA-атрибут для доступности
+            const isExpanded = navList.classList.contains('active');
+            menuToggle.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
         });
 
         // Обработчик клика по ссылкам внутри меню
@@ -52,23 +65,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (navList.classList.contains('active')) {
                     navList.classList.remove('active'); // Скрываем меню
                     menuToggle.classList.remove('open'); // Убираем класс 'open' с кнопки
+                    menuToggle.setAttribute('aria-expanded', 'false'); // Обновляем ARIA
                 }
             });
         });
     }
+    
+    // --- Инициализация интерактивности кнопок "Подробнее"/"Свернуть" ---
+    document.querySelectorAll('.toggle-button').forEach(button => {
+        button.addEventListener('click', function() {
+            toggleContent(this);
+        });
+        // Устанавливаем начальное состояние ARIA-атрибута
+        button.setAttribute('aria-expanded', 'false'); 
+    });
+
+    // --- Начальная инициализация состояний при загрузке ---
+    // Убеждаемся, что все блоки контента скрыты, а кнопки не отмечены как раскрытые.
+    document.querySelectorAll('.collapsible-section').forEach(section => {
+        const button = section.querySelector('.toggle-button');
+        const content = section.querySelector('.collapsible-content');
+        
+        if (section.classList.contains('expanded')) { // Если каким-то образом блок уже был раскрыт (не должно быть при первой загрузке)
+            button.setAttribute('aria-expanded', 'true');
+            content.style.display = 'block';
+            // if (button.querySelector('span')) button.querySelector('span').textContent = "Свернуть";
+        } else {
+            button.setAttribute('aria-expanded', 'false');
+            content.style.display = 'none';
+            // if (button.querySelector('span')) button.querySelector('span').textContent = "Подробнее";
+        }
+    });
+    
+    // Начальное состояние ARIA для кнопки меню, если она есть
+    if (menuToggle) {
+        menuToggle.setAttribute('aria-expanded', 'false');
+    }
 });
 
-// --- Инициализация состояния при загрузке страницы ---
-// Гарантируем, что при первой загрузке все блоки контента скрыты,
-// а кнопки имеют текст "Подробнее".
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.toggle-button').forEach(button => {
-        // Проверяем, не является ли эта кнопка уже открытой (маловероятно при первой загрузке, но для надежности)
-        // Если кнопка имеет активный state, то текст должен быть "Свернуть"
-        // В данном случае, при первой загрузке, все должны быть "Подробнее"
-        button.textContent = "Подробнее"; 
-    });
-    document.querySelectorAll('.collapsible-content').forEach(content => {
-        content.style.display = "none"; // Убеждаемся, что весь контент скрыт
-    });
-});
