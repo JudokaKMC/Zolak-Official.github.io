@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вышестоящие организации - ДДиМ "Золак"</title>
+    <link rel="stylesheet" href="../style.css"> <!-- Подключаем общий CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Стили для раздела "Вышестоящие организации" */
+        .organization-item {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            /* Важно для правильного отображения анимации */
+            box-shadow: var(--shadow-light);
+        }
+
+        .organization-header {
+            background-color: var(--light-bg);
+            padding: 18px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease;
+        }
+
+        .organization-header:hover {
+            background-color: var(--border-color);
+        }
+
+        .organization-header .title {
+            font-weight: 700;
+            /* Более жирный заголовок */
+            font-size: 1.3rem;
+            color: var(--dark-bg);
+        }
+
+        .organization-header .toggle-icon {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .organization-header.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .organization-content {
+            padding: 25px;
+            max-height: 0;
+            /* Начальное состояние - скрыто */
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+            /* Чуть более плавная анимация */
+            background-color: #fff;
+            border-top: none;
+        }
+
+        .organization-content.show {
+            max-height: 1500px;
+            /* Увеличено для большего контента */
+        }
+
+        .organization-logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .organization-logo {
+            max-width: 150px;
+            /* Ограничиваем размер логотипа */
+            height: auto;
+            display: inline-block;
+            /* Чтобы центрировалось */
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        .organization-content .section-title {
+            font-weight: 600;
+            color: var(--dark-bg);
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            display: block;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .organization-content .content-item {
+            margin-bottom: 18px;
+        }
+
+        .organization-content .content-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .organization-content .content-label {
+            font-weight: 600;
+            color: var(--text-color);
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+
+        .organization-content .content-value {
+            font-size: 1rem;
+            /* Чуть крупнее шрифт для информации */
+            color: var(--secondary-color);
+            display: block;
+            line-height: 1.6;
+        }
+
+        .organization-content .content-value .phone {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            /* Убираем подчеркивание у телефона */
+        }
+
+        .organization-content .content-value .phone:hover {
+            text-decoration: underline;
+            /* Подчеркивание при наведении */
+        }
+
+        .organization-content .content-value .website-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .organization-content .content-value .website-link:hover {
+            text-decoration: underline;
+        }
+
+        .organization-content .note {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Верхняя панель (копируется со всех страниц) -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info-top">
+                <span><i class="fas fa-map-marker-alt"></i> г. Минск, пр-т Партизанский, 146</span>
+                <span><i class="fas fa-phone"></i> +375(17)258-22-04</span>
+                <span><i class="fas fa-envelope"></i> zolak@minskedu.gov.by</span>
+            </div>
+            <div class="social-links-top">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Шапка сайта (копируется со всех страниц) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo-title">
+                <img src="../images/logo.png" alt="Логотип ДПМ Золак" class="site-logo">
+                <div class="site-name">
+                    <h2>ДДиМ "Золак"</h2>
+                    <p>Дворец Детей и Молодежи</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../one-window.html" class="active">Одно окно</a></li>
+                    <li><a href="../about.html">Об учреждении</a></li>
+                    <li><a href="../life.html">Жизнь учреждения</a></li>
+                    <li><a href="../students.html">Обучающимся</a></li>
+                    <li><a href="../parents.html">Родителям</a></li>
+                    <li><a href="../teachers.html">Педагогам</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <!-- Основной контент страницы -->
+    <main>
+        <section class="page-header-section">
+            <div class="container">
+                <h1>Вышестоящие организации</h1>
+                <nav class="breadcrumb">
+                    <a href="../index.html">Главная</a> / <a href="../one-window.html">Одно окно</a> / Вышестоящие
+                    организации
+                </nav>
+            </div>
+        </section>
+
+        <section class="content-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Информация о вышестоящих организациях</h2>
+                </div>
+
+                <!-- Организация 1: Министерство образования Республики Беларусь -->
+                <div class="organization-item">
+                    <div class="organization-header">
+                        <span class="title">Министерство образования Республики Беларусь</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="organization-content">
+                        <div class="organization-logo-container">
+                            <!-- Замените 'path/to/ministry_logo.png' на реальный путь к логотипу -->
+                            <img src="../images/ministry_logo.png" alt="Логотип Министерства образования"
+                                class="organization-logo">
+                        </div>
+                        <div class="content-item">
+                            <span class="content-label">Адрес</span>
+                            <span class="content-value">220010, г.Минск, ул. Советская, 9</span>
+                        </div>
+                        <div class="content-item">
+                            <span class="content-label">Приемная Министра образования</span>
+                            <span class="content-value">
+                                <a href="tel:+375173274736" class="phone">+375 (17) 327 47 36</a>
+                            </span>
+                        </div>
+                        <div class="content-item">
+                            <span class="content-label">Режим работы</span>
+                            <span class="content-value">
+                                Понедельник - пятница: 9.00 - 13.00, 14.00 - 18.00
+                            </span>
+                        </div>
+                        <div class="content-item">
+                            <span class="content-label">Сайт</span>
+                            <span class="content-value">
+                                <a href="https://edu.gov.by" class="website-link" target="_blank">https://edu.gov.by</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Организация 2: Комитет по образованию Мингорисполкома -->
+                <div class="organization-item">
+                    <div class="organization-header">
+                        <span class="title">Комитет по образованию Мингорисполкома</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="organization-content">
+                        <div class="organization-logo-container">
+                            <!-- Замените 'path/to/committee_logo.png' на реальный путь к логотипу -->
+                            <img src="../images/committee_logo.png" alt="Логотип Комитета по образованию"
+                                class="organization-logo">
+                        </div>
+                        <div class="content-item">
+                            <span class="content-label">Адрес</span>
+                            <span class="content-value">220004, г.Минск, ул.Тимирязева, 9а</span>
+                        </div>
+                        <div class="content-item">
+                            <span class="content-label">Приёмная председателя комитета</span>
+                            <span class="content-value">
+                                <a href="tel:+375173471960" class="phone">+375 (17) 347-19-60</a>
+                            </span>
+                        </div>
+                        <div class="content-item">
+                            <span class="content-label">Режим работы</span>
+                            <span class="content-value">
+                                понедельник, вторник, среда, четверг: 8.45 - 13.00, 14.00 - 18.00<br>
+                                пятница: 8.45 - 13.00, 14.00 - 16.45
+                            </span>
+                        </div>
+                        <div class="content-item">
+                            <span class="content-label">Сайт</span>
+                            <span class="content-value">
+                                <a href="https://minsk.edu.by" class="website-link"
+                                    target="_blank">https://minsk.edu.by</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Организация 3: Управление по образованию администрации Заводского района г.Минска -->
+                <div class="organization-item">
+                    <div class="organization-header">
+                        <span class="title">Управление по образованию администрации Заводского района г.Минска</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="organization-content">
+                        <div class="organization-logo-container">
+                            <!-- Замените 'path/to/district_logo.png' на реальный путь к логотипу -->
+                            <img src="../images/district_logo.png"
+                                alt="Логотип Управления по образованию Заводского района" class="organization-logo">
+                        </div>
+                        <div class="content-item">
+                            <span class="content-label">Адрес</span>
+                            <span class="content-value">г. Минск, ул. Искалиева 12А</span>
+                        </div>
+                        <div class="content-item">
+                            <span class="content-label">Приёмная</span>
+                            <span class="content-value">
+                                <a href="tel:+375172752000" class="phone">+375 (17) 275-20-00</a>
+                            </span>
+                        </div>
+                        <div class="content-item">
+                            <span class="content-label">Режим работы</span>
+                            <span class="content-value">
+                                Понедельник-четверг: 8:45 - 13.00, 14:00 - 18:00<br>
+                                Пятница: 8:45 - 13.00, 14:00 - 16:45
+                            </span>
+                        </div>
+                        <div class="content-item">
+                            <span class="content-label">Сайт</span>
+                            <span class="content-value">
+                                <a href="http://zavue.minsk.edu.by" class="website-link"
+                                    target="_blank">http://zavue.minsk.edu.by</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер (копируется со всех страниц) -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 ДДиМ "Золак". Все права защищены.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="../about.html">Об учреждении</a></li>
+                    <li><a href="../one-window.html" class="active">Одно окно</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                    <li><a href="../one-window/privacy_policy.html">Политика конфиденциальности</a></li>
+                </ul>
+            </nav>
+            <div class="social-links-footer">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript для раскрытия/скрытия контента
+        document.addEventListener('DOMContentLoaded', function () {
+            const organizationHeaders = document.querySelectorAll('.organization-header');
+
+            organizationHeaders.forEach(header => {
+                header.addEventListener('click', function () {
+                    const organizationItem = this.closest('.organization-item');
+                    const content = organizationItem.querySelector('.organization-content');
+                    const toggleIcon = this.querySelector('.toggle-icon');
+
+                    // Переключаем класс 'active' для иконки
+                    this.classList.toggle('active');
+
+                    // Переключаем видимость контента
+                    if (content.classList.contains('show')) {
+                        content.classList.remove('show');
+                        content.style.maxHeight = null; // Сбрасываем, чтобы анимация сработала при закрытии
+                    } else {
+                        content.classList.add('show');
+                        // Устанавливаем max-height равным высоте контента для анимации
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

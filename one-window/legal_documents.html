@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нормативно-правовые документы - ДДиМ "Золак"</title>
+    <link rel="stylesheet" href="../style.css"> <!-- Подключаем общий CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Стили для страницы "Нормативно-правовые документы" */
+        .legal-docs-section {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .legal-docs-section h3 {
+            color: var(--primary-color);
+            font-family: var(--heading-font);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .legal-docs-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .legal-docs-list li {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color);
+            font-size: 1.1rem;
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .legal-docs-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .legal-docs-list .doc-title {
+            font-weight: 600;
+            color: var(--dark-bg);
+            display: block;
+            /* Чтобы каждая ссылка начиналась с новой строки */
+            margin-bottom: 8px;
+        }
+
+        .legal-docs-list .doc-link {
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .legal-docs-list .doc-link:hover {
+            color: var(--primary-hover-color);
+            text-decoration: underline;
+        }
+
+        .legal-docs-list .note {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Верхняя панель (копируется со всех страниц) -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info-top">
+                <span><i class="fas fa-map-marker-alt"></i> г. Минск, пр-т Партизанский, 146</span>
+                <span><i class="fas fa-phone"></i> +375(17)258-22-04</span>
+                <span><i class="fas fa-envelope"></i> zolak@minskedu.gov.by</span>
+            </div>
+            <div class="social-links-top">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Шапка сайта (копируется со всех страниц) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo-title">
+                <img src="../images/logo.png" alt="Логотип ДПМ Золак" class="site-logo">
+                <div class="site-name">
+                    <h2>ДДиМ "Золак"</h2>
+                    <p>Дворец Детей и Молодежи</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../one-window.html" class="active">Одно окно</a></li>
+                    <li><a href="../about.html">Об учреждении</a></li>
+                    <li><a href="../life.html">Жизнь учреждения</a></li>
+                    <li><a href="../students.html">Обучающимся</a></li>
+                    <li><a href="../parents.html">Родителям</a></li>
+                    <li><a href="../teachers.html">Педагогам</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <!-- Основной контент страницы -->
+    <main>
+        <section class="page-header-section">
+            <div class="container">
+                <h1>Нормативно-правовые документы</h1>
+                <nav class="breadcrumb">
+                    <a href="../index.html">Главная</a> / <a href="../one-window.html">Одно окно</a> /
+                    Нормативно-правовые документы
+                </nav>
+            </div>
+        </section>
+
+        <section class="content-section section-padding">
+            <div class="container">
+                <div class="legal-docs-section">
+                    <h3>Нормативно-правовые акты</h3>
+                    <ul class="legal-docs-list">
+                        <li>
+                            <span class="doc-title">КОДЕКС Республики Беларусь об образовании от 13 января 2011
+                                г.</span>
+                            <!-- Замените '#' на реальную ссылку, если есть -->
+                            <a href="https://pravo.by/document/?guid=3871&p0=Hk1100243" class="doc-link">Ссылка на
+                                документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">ДИРЕКТИВА Президента Республики Беларусь от 11 марта 2004 г. №1 "О
+                                мерах по укреплению общественной безопасности и дисциплины"</span>
+                            <a href="https://president.gov.by/ru/documents/direktiva-1-ot-11-marta-2004-g-1397"
+                                class="doc-link">Ссылка на документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">ПОСТАНОВЛЕНИЕ СОВЕТА МИНИСТРОВ РЕСПУБЛИКИ БЕЛАРУСЬ 29 декабря 2021
+                                г. № 773 "О Программе патриотического воспитания населения Республики Беларусь на
+                                2022–2025 годы"</span>
+                            <a href="https://pravo.by/document/?guid=12551&p0=C22100773&p1=1&p5=0"
+                                class="doc-link">Ссылка на документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">ПОСТАНОВЛЕНИЕ СОВЕТА МИНИСТРОВ РЕСПУБЛИКИ БЕЛАРУСЬ 19 июня 2021 г. №
+                                349 "О Стратегии развития государственной молодежной политики Республики Беларусь до
+                                2030 года"</span>
+                            <a href="https://pravo.by/document/?guid=12551&p0=C22100349&p1=1" class="doc-link">Ссылка на
+                                документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">ПОСТАНОВЛЕНИЕ СОВЕТА МИНИСТРОВ РЕСПУБЛИКИ БЕЛАРУСЬ 2 февраля 2021 г.
+                                № 66 "О Государственной программе «Цифровое развитие Беларуси» на 2021–2025 годы"</span>
+                            <a href="https://pravo.by/document/?guid=12551&p0=C22100066&p1=1&p5=0"
+                                class="doc-link">Ссылка на документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">ПОСТАНОВЛЕНИЕ СОВЕТА МИНИСТРОВ РЕСПУБЛИКИ БЕЛАРУСЬ 29 января 2021 г.
+                                № 57 "О Государственной программе «Образование и молодежная политика» на 2021–2025
+                                годы"</span>
+                            <a href="https://pravo.by/document/?guid=12551&p0=C22100057&p1=1" class="doc-link">Ссылка на
+                                документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">План мероприятий по реализации Директивы Президента Республики
+                                Беларусь от 11 марта 2004 г. №1 «О мерах по укреплению общественной безопасности и
+                                дисциплины» в государственном учреждении образования «Дворец детей и молодежи «Золак»
+                                г.Минска» на 2021 год</span>
+                            <a href="https://drive.google.com/file/d/1Wzw2Kzl-baqe7GHRjkonSZgrZ8sqm2bx/view?usp=sharing"
+                                class="doc-link">Ссылка на документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">Инструктивно-методическое письмо Министерства образования Республики
+                                Беларусь «Об использовании современных информационно-коммуникационных технологий в
+                                учреждениях общего среднего образования в 2024/2025 учебном году»</span>
+                            <a href="https://drive.google.com/file/d/1JXw5NBLH_ooNgc-mUJJcSxqGkXfKikmB/view"
+                                class="doc-link">Ссылка на документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">Закон Республики Беларусь "О правах ребенка" (в редакции Закона
+                                Республики Беларусь от 19 мая 2022 г. No 171-З)</span>
+                            <a href="https://drive.google.com/file/d/1egQg7jgBQYzWqxV2boIWRVArmyHMcH8P/view?usp=sharing"
+                                class="doc-link">Ссылка на документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">Конвенция о правах ребенка</span>
+                            <a href="https://drive.google.com/file/d/1uY4SLRXbH3FmW3dkwq_Wp8aGcmZ-4Hf1/view?usp=sharing"
+                                class="doc-link">Ссылка на документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">Указ Президента Республики Беларусь № 156 от 7 мая 2020 г. № 156 «О
+                                приоритетных направлениях научной, научно-технической и инновационной деятельности на
+                                2021 - 2025 годы»</span>
+                            <a href="https://president.gov.by/ru/documents/ukaz-no-156-ot-7-maya-2020-g"
+                                class="doc-link">Ссылка на документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">Национальная стратегия устойчивого социально-экономического развития
+                                Республики Беларусь на период до 2030 года</span>
+                            <a href="https://drive.google.com/file/d/1DafigGPM5uNF_13MuN8S6VxX4TGgZ5--/view?usp=sharing"
+                                class="doc-link">Ссылка на документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">Стратегия "Наука и технологии: 2018-2040" (Постановление Президиума
+                                Национальной академии наук Беларуси 26.02.2018 No 17)</span>
+                            <a href="https://drive.google.com/file/d/1v2QODrn5rbO77bYvzaUSsSp4MEArG3xQ/view?usp=sharing"
+                                class="doc-link">Ссылка на документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">Концептуальные подходы к развитию системы образования Республики
+                                Беларусь до 2020 года и на перспективу до 2030 года (Приказ Министра образования
+                                Республики Беларусь 29.11.2017 № 742)</span>
+                            <a href="https://docs.google.com/document/d/1lMMZnHfs5mnbMQYd96D3pF6xz8310bR9/edit?usp=sharing&ouid=113965829234745235476&rtpof=true&sd=true"
+                                class="doc-link">Ссылка на документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">Концепция непрерывного воспитания детей и учащейся молодежи
+                                (Постановление Министерства образования Республики Беларусь от 15 июля 2015 № 82)</span>
+                            <a href="https://docs.google.com/document/d/1-yDrggppzxo8av0O9w8wqdAm1_1R7TgN/edit?usp=sharing&ouid=113965829234745235476&rtpof=true&sd=true"
+                                class="doc-link">Ссылка на документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">Концепция развития системы образования Республики Беларусь до 2030
+                                года (Постановление Совета Министров Республики Беларусь 30.11.2021 No 683)</span>
+                            <a href="https://docs.google.com/document/d/1-yDrggppzxo8av0O9w8wqdAm1_1R7TgN/edit?usp=sharing&ouid=113965829234745235476&rtpof=true&sd=true"
+                                class="doc-link">Ссылка на документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">Концепции развития инклюзивного образования лиц с особенностями
+                                психофизического развития в Республике Беларусь (Приказ Министра образования Республики
+                                Беларусь от 22.07.2015 No 608)</span>
+                            <a href="https://drive.google.com/file/d/1ME0h15rO9-BuvsN0QscQgmfK6J3KRMSL/view?usp=sharing"
+                                class="doc-link">Ссылка на документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">Концепция развития педагогического образования в Республике Беларусь
+                                на 2021-2025 годы (Приказ Министра образования Республики Беларусь от 13.05.2021
+                                №366)</span>
+                            <a href="https://drive.google.com/file/d/1w02-kqYa-n35vJvCe_JmtxLZcs3bJ6su/view?usp=sharing"
+                                class="doc-link">Ссылка на документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">Правила педагогических работников</span>
+                            <a href="https://drive.google.com/file/d/1g80jlxNyffi_mWL18UZQBQQdTRzRSprO/view?usp=sharing"
+                                class="doc-link">Ссылка на документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">Программа непрерывного воспитания детей и учащейся молодежи на
+                                2021-2025 гг.</span>
+                            <a href="https://adu.by/images/2021/03/programma-vospitaniya-2021-2025.pdf"
+                                class="doc-link">Ссылка на документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">ГОСУДАРСТВЕННАЯ ПРОГРАММА ИННОВАЦИОННОГО РАЗВИТИЯ РЕСПУБЛИКИ
+                                БЕЛАРУСЬ НА 2021 - 2025 ГОДЫ</span>
+                            <a href="http://belisa.org.by/pdf/2020/GPIR.pdf" class="doc-link">Ссылка на документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">Государственная программа «Физическая культура и спорт» на 2021–2025
+                                годы</span>
+                            <a href="https://pravo.by/upload/docs/op/C22100054_1612386000.pdf" class="doc-link">Ссылка
+                                на документ</a>
+                        </li>
+                        <li>
+                            <span class="doc-title">Программа сотрудничества между Министерством образования Республики
+                                Беларусь и Белорусской Православной Церковью на 2020 – 2025 годы</span>
+                            <a href="https://docviewer.yandex.by/view/197998728/?page=2&*=H99WmDdiC%2BbZfQRhKgA56vtvI357InVybCI6InlhLWJyb3dzZXI6Ly80RFQxdVhFUFJySlJYbFVGb2V3cnVQeUYwMVhMZkk0MEpybUZkcFdqV282Zl9SUDNhRXFvZHFWU2hxNm9paVhVMW9YY2R0Zko1QUVCX3p4VnBDRmc4TWh4RkpyeW4ycU0wd0FyVWZZajNWYkFPWDdXUGN1YWplZ3g3d1hDSWdtbGdiazMzd0Z2SzU2bFM3NHB6WGZneWc9PT9zaWduPXk5clZaQTMtZTl1MzlYdm1ZdnY3eHBpNHVNeXZWZlJjMzJBTlZqdUg2MFk9IiwidGl0bGUiOiJwci1zb3RydWQtTU8tUkItQmVsLXByYXZvc2wtdHNlcmtvdi0yMDIwLTIwMjUuZG9jeCIsIm5vaWZyYW1lIjpmYWxzZSwidWlkIjoiMTk3OTk4NzI4IiwidHMiOjE2Mjk3MTk5NjI4NjMsInl1IjoiMjQ2NTEyMDE1NzU0NDQ5NDMifQ%3D%3D"
+                                class="doc-link">Ссылка на документ</a>
+                            <p class="note">Все ссылки в тексте</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер (копируется со всех страниц) -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 ДДиМ "Золак". Все права защищены.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="../about.html">Об учреждении</a></li>
+                    <li><a href="../one-window.html" class="active">Одно окно</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                    <li><a href="../one-window/privacy_policy.html">Политика конфиденциальности</a></li>
+                </ul>
+            </nav>
+            <div class="social-links-footer">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <!-- JavaScript для обработки ссылок, если нужно добавить их динамически или проверить -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Пример: если бы вы хотели парсить ссылки из текста и делать их активными
+            // В данном случае, все ссылки уже вставлены вручную.
+            // Если бы требовалось, можно было бы парсить текст каждого li и генерировать ссылки.
+
+            // Если у вас есть общий скрипт, который обрабатывает все ссылки, он должен работать и здесь.
+            // Если нужен отдельный обработчик для этих ссылок, он может быть здесь.
+
+            // Пример обработчика для ссылок, которые имеют 'doc-link' класс:
+            const docLinks = document.querySelectorAll('.legal-docs-list .doc-link');
+            docLinks.forEach(link => {
+                // Можно добавить дополнительные проверки или действия при клике
+                // Например, если ссылка - это '#', то выводим сообщение
+                if (link.getAttribute('href') === '#') {
+                    link.addEventListener('click', function (event) {
+                        event.preventDefault(); // Предотвращаем стандартное действие
+                        alert('Ссылка на данный документ пока не добавлена. Пожалуйста, обратитесь к администрации.');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

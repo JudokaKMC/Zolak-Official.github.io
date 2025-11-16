@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Белая Русь - ДДиМ "Золак"</title>
+    <link rel="stylesheet" href="../style.css"> <!-- Подключаем общий CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Стили для страницы "Белая Русь" */
+        .belarus-section {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .belarus-section h3 {
+            color: var(--primary-color);
+            font-family: var(--heading-font);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .belarus-section .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark-bg);
+            margin-bottom: 15px;
+            margin-top: 25px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--border-color-light);
+        }
+
+        .belarus-section .intro-text {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        /* Стили для блока "Полезные ссылки" */
+        .useful-links ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .useful-links li {
+            margin-bottom: 10px;
+        }
+
+        .useful-links .link {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .useful-links .link:hover {
+            color: var(--primary-hover-color);
+            text-decoration: underline;
+        }
+
+        .useful-links .link .icon {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        /* Стили для разделов с текстом */
+        .text-content {
+            margin-top: 25px;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .text-content p {
+            margin-bottom: 15px;
+        }
+
+        .text-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .text-content .highlight {
+            font-weight: 600;
+            color: var(--dark-bg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Верхняя панель (копируется со всех страниц) -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info-top">
+                <span><i class="fas fa-map-marker-alt"></i> г. Минск, пр-т Партизанский, 146</span>
+                <span><i class="fas fa-phone"></i> +375(17)258-22-04</span>
+                <span><i class="fas fa-envelope"></i> zolak@minskedu.gov.by</span>
+            </div>
+            <div class="social-links-top">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Шапка сайта (копируется со всех страниц) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo-title">
+                <img src="../images/logo.png" alt="Логотип ДПМ Золак" class="site-logo">
+                <div class="site-name">
+                    <h2>ДДиМ "Золак"</h2>
+                    <p>Дворец Детей и Молодежи</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../one-window.html">Одно окно</a></li>
+                    <li><a href="../about.html" class="active">Об учреждении</a></li>
+                    <li><a href="../life.html">Жизнь учреждения</a></li>
+                    <li><a href="../students.html">Обучающимся</a></li>
+                    <li><a href="../parents.html">Родителям</a></li>
+                    <li><a href="../teachers.html">Педагогам</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <!-- Основной контент страницы -->
+    <main>
+        <section class="page-header-section">
+            <div class="container">
+                <h1>Белая Русь</h1>
+                <nav class="breadcrumb">
+                    <a href="../index.html">Главная</a> / <a href="../about.html">Об учреждении</a> / Белая Русь
+                </nav>
+            </div>
+        </section>
+
+        <section class="content-section section-padding">
+            <div class="container">
+                <div class="belarus-section">
+                    <h3>Первичная организация РОО «Белая Русь»</h3>
+                    <h4 class="section-title">Государственного учреждения образования «Дворец детей и молодежи «Золак»
+                        г.Минска»</h4>
+
+                    <!-- Полезные ссылки -->
+                    <div class="useful-links">
+                        <h4 class="section-title">ПОЛЕЗНЫЕ ССЫЛКИ</h4>
+                        <ul>
+                            <li>
+                                <a href="https://1br.by/" target="_blank" class="link">
+                                    <span class="icon"><i class="fas fa-link"></i></span>
+                                    Республиканское общественное объединение «Белая Русь»
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://zav.minsk.gov.by/obschestvennye-obedinenija-i-organizatsii-rajona/belayarus/sotrudniki-mgo-belaya-rus"
+                                    target="_blank" class="link">
+                                    <span class="icon"><i class="fas fa-link"></i></span>
+                                    Минская городская организация «Белая Русь»
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://zav.minsk.gov.by/obschestvennye-obedinenija-i-organizatsii-rajona/belayarus/ot-a-do-ya"
+                                    target="_blank" class="link">
+                                    <span class="icon"><i class="fas fa-link"></i></span>
+                                    Заводская районная организация «Белая Русь»
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://1br.by/documentation" target="_blank" class="link">
+                                    <span class="icon"><i class="fas fa-file-alt"></i></span>
+                                    Сборник нормативных документов, регламентирующих деятельность РОО «Белая Русь»
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Беларусь помнит! -->
+                    <div class="text-content">
+                        <h4 class="section-title">Беларусь помнит!</h4>
+                        <p>
+                            3 июля в 10 часов состоялось патриотическое шествие «Беларусь помнит!». В шествии приняли
+                            участие члены первичной организации РОО «Белая Русь» государственного учреждения образования
+                            «Дворец детей и молодежи «Золак» г.Минска».
+                        </p>
+                        <p>
+                            Участники патриотического шествия прошли по проспекту Независимости до площади Победы, где
+                            состоялась церемония возложения цветов к Вечному огню.
+                        </p>
+                    </div>
+
+                    <!-- Семинар -->
+                    <div class="text-content">
+                        <h4 class="section-title">Семинар для председателей первичных организаций РОО «Белая Русь»</h4>
+                        <p>
+                            В рамках работы Заводской районной организации города Минска Республиканского общественного
+                            объединения «Белая Русь» 12 декабря 2019 года в ГУО «Средняя школа №172 г.Минска» состоялся
+                            семинар для председателей первичных организаций РОО «Белая Русь».
+                        </p>
+                        <p>
+                            На семинаре были рассмотрены важные вопросы по делопроизводству, ведению сайта и оформлению
+                            стенда, реализации социальных проектов РОО «Белая Русь».
+                        </p>
+                        <p>
+                            Председатель Заводской районной организации г.Минска РОО «Белая Русь» Нехайчик Оксана
+                            Владимировна вручила председателям первичных организаций учреждений образования и
+                            предприятий брендовую продукцию с логотипом организации.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер (копируется со всех страниц) -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 ДДиМ "Золак". Все права защищены.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="../about.html" class="active">Об учреждении</a></li>
+                    <li><a href="../one-window.html">Одно окно</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                    <li><a href="../one-window/privacy_policy.html">Политика конфиденциальности</a></li>
+                </ul>
+            </nav>
+            <div class="social-links-footer">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript для обработки ссылок, если нужно добавить их динамически или проверить
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('.belarus-section .link');
+            links.forEach(link => {
+                // Пример: если ссылка - это '#', то выводим сообщение
+                if (link.getAttribute('href') === '#') {
+                    link.addEventListener('click', function (event) {
+                        event.preventDefault(); // Предотвращаем стандартное действие
+                        alert('Ссылка на данный ресурс пока не добавлена. Пожалуйста, обратитесь к администрации.');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

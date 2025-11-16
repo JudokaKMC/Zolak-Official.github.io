@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Администрация - ДДиМ "Золак"</title>
+    <link rel="stylesheet" href="../style.css"> <!-- Подключаем общий CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Стили для страницы "Администрация" */
+        .administration-section {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .administration-section h3 {
+            color: var(--primary-color);
+            font-family: var(--heading-font);
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            /* 2-3 колонки на десктопе, 1 на мобильных */
+            gap: 30px;
+            /* Расстояние между карточками */
+            justify-content: center;
+        }
+
+        .staff-card {
+            background-color: #f9f9f9;
+            border: 1px solid var(--border-color-light);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-small);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .staff-photo {
+            width: 150px;
+            /* Размер фото */
+            height: 150px;
+            border-radius: 50%;
+            /* Круглое фото */
+            object-fit: cover;
+            /* Обрезка фото, чтобы оно вписалось */
+            margin-bottom: 15px;
+            border: 3px solid var(--primary-color);
+            /* Рамка вокруг фото */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .staff-position {
+            font-family: var(--heading-font);
+            font-size: 1.25rem;
+            color: var(--dark-bg);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .staff-name {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .staff-contact {
+            font-size: 1rem;
+            color: var(--text-color-light);
+            line-height: 1.6;
+        }
+
+        .staff-contact i {
+            color: var(--primary-color);
+            margin-right: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .administration-section {
+                padding: 20px;
+            }
+
+            .administration-section h3 {
+                font-size: 1.7rem;
+                margin-bottom: 25px;
+            }
+
+            .staff-grid {
+                grid-template-columns: 1fr;
+                /* Одна колонка на мобильных */
+            }
+
+            .staff-card {
+                padding: 15px;
+            }
+
+            .staff-photo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .staff-position {
+                font-size: 1.1rem;
+            }
+
+            .staff-name {
+                font-size: 1rem;
+            }
+
+            .staff-contact {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Верхняя панель (копируется со всех страниц) -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info-top">
+                <span><i class="fas fa-map-marker-alt"></i> г. Минск, пр-т Партизанский, 146</span>
+                <span><i class="fas fa-phone"></i> +375(17)258-22-04</span>
+                <span><i class="fas fa-envelope"></i> zolak@minskedu.gov.by</span>
+            </div>
+            <div class="social-links-top">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Шапка сайта (копируется со всех страниц) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo-title">
+                <img src="../images/logo.png" alt="Логотип ДПМ Золак" class="site-logo">
+                <div class="site-name">
+                    <h2>ДДиМ "Золак"</h2>
+                    <p>Дворец Детей и Молодежи</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../one-window.html">Одно окно</a></li>
+                    <li><a href="../about.html" class="active">Об учреждении</a></li>
+                    <li><a href="../life.html">Жизнь учреждения</a></li>
+                    <li><a href="../students.html">Обучающимся</a></li>
+                    <li><a href="../parents.html">Родителям</a></li>
+                    <li><a href="../teachers.html">Педагогам</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <!-- Основной контент страницы -->
+    <main>
+        <section class="page-header-section">
+            <div class="container">
+                <h1>Администрация</h1>
+                <nav class="breadcrumb">
+                    <a href="../index.html">Главная</a> / <a href="../about.html">Об учреждении</a> / Администрация
+                </nav>
+            </div>
+        </section>
+
+        <section class="content-section section-padding">
+            <div class="container">
+                <div class="administration-section">
+                    <h3>Руководство учреждения</h3>
+
+                    <div class="staff-grid">
+                        <!-- Директор -->
+                        <div class="staff-card">
+                            <img src="../images/staff/director.jpg" alt="Фото Веременко Светланы Георгиевны"
+                                class="staff-photo">
+                            <p class="staff-position">Директор</p>
+                            <p class="staff-name">Веременко Светлана Георгиевна</p>
+                            <p class="staff-contact">
+                                <i class="fas fa-door-open"></i> каб. № 302<br>
+                                <i class="fas fa-phone-alt"></i> тел. 375-51-01
+                            </p>
+                        </div>
+
+                        <!-- Заместитель директора по УВР -->
+                        <div class="staff-card">
+                            <img src="../images/staff/lesitsa.jpg" alt="Фото Лесицы Алины Евгеньевны"
+                                class="staff-photo">
+                            <p class="staff-position">Заместитель директора<br>по учебно-воспитательной работе</p>
+                            <p class="staff-name">Лисица Алина Евгеньевна</p>
+                            <p class="staff-contact">
+                                <i class="fas fa-door-open"></i> каб. № 303<br>
+                                <i class="fas fa-phone-alt"></i> тел. 375-71-01
+                            </p>
+                        </div>
+
+                        <!-- Заместитель директора по УМР -->
+                        <div class="staff-card">
+                            <img src="../images/staff/volkova.jpg" alt="Фото Волковой Татьяны Александровны"
+                                class="staff-photo">
+                            <p class="staff-position">Заместитель директора<br>по учебно-методической работе</p>
+                            <p class="staff-name">Волкова Татьяна Александровна</p>
+                            <p class="staff-contact">
+                                <i class="fas fa-door-open"></i> каб. № 309<br>
+                                <i class="fas fa-phone-alt"></i> тел. 374-34-87
+                            </p>
+                        </div>
+
+                        <!-- Заместитель директора по ХР -->
+                        <div class="staff-card">
+                            <img src="../images/staff/zhigar.jpg" alt="Фото Жигаря Сергея Александровича"
+                                class="staff-photo">
+                            <p class="staff-position">Заместитель директора<br>по хозяйственной работе</p>
+                            <p class="staff-name">Жигарь Сергей Александрович</p>
+                            <p class="staff-contact">
+                                <i class="fas fa-door-open"></i> каб. № 102<br>
+                                <i class="fas fa-phone-alt"></i> тел. 375-61-01
+                            </p>
+                        </div>
+
+                        <!-- Приемная/Секретарь -->
+                        <div class="staff-card">
+
+
+                            <p class="staff-position">Секретарь (Приемная)</p>
+                            <p class="staff-name">Солодкая Анна Владимировна</p>
+                            <p class="staff-contact">
+                                <i class="fas fa-door-open"></i> каб. № 301<br>
+                                <i class="fas fa-phone-alt"></i> телефон/факс: 258-22-04
+                            </p>
+                        </div>
+
+                        <!-- Отдел кадров -->
+                        <div class="staff-card">
+
+
+                            <p class="staff-position">Инспектор отдела кадров</p>
+                            <p class="staff-name">Сокол Татьяна Владимировна</p>
+                            <p class="staff-contact">
+                                <i class="fas fa-door-open"></i> каб. № 105<br>
+                                <i class="fas fa-phone-alt"></i> тел./факс: 263-93-66
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер (копируется со всех страниц) -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 ДДиМ "Золак". Все права защищены.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="../about.html" class="active">Об учреждении</a></li>
+                    <li><a href="../one-window.html">Одно окно</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                    <li><a href="../one-window/privacy_policy.html">Политика конфиденциальности</a></li>
+                </ul>
+            </nav>
+            <div class="social-links-footer">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- <script src="../script.js"></script> -->
+</body>
+
+</html>

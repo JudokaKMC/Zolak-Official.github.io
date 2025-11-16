@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Административные процедуры - ДДиМ "Золак"</title>
+    <link rel="stylesheet" href="../style.css"> <!-- Подключаем общий CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Стили для раздела "Административные процедуры" */
+        .procedure-item {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            /* Чтобы внутренние элементы не вылезали */
+        }
+
+        .procedure-header {
+            background-color: var(--light-bg);
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease;
+        }
+
+        .procedure-header:hover {
+            background-color: var(--border-color);
+        }
+
+        .procedure-header .title {
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: var(--dark-bg);
+        }
+
+        .procedure-header .toggle-icon {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .procedure-header.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .procedure-content {
+            padding: 20px;
+            max-height: 0;
+            /* Начальное состояние - скрыто */
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+            background-color: #fff;
+            border-top: none;
+            /* Убираем верхнюю границу, она есть у header */
+        }
+
+        .procedure-content.show {
+            max-height: 1000px;
+            /* Достаточно большое значение, чтобы показать весь контент */
+        }
+
+        .procedure-content .section-title {
+            font-weight: 600;
+            color: var(--dark-bg);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: block;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .procedure-content .content-item {
+            margin-bottom: 15px;
+        }
+
+        .procedure-content .content-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .procedure-content .content-label {
+            font-weight: 600;
+            color: var(--text-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .procedure-content .content-value {
+            font-size: 0.95rem;
+            color: var(--secondary-color);
+            display: block;
+            line-height: 1.5;
+        }
+
+        .procedure-content .content-value .phone {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .procedure-content .note {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .procedure-content .highlight {
+            font-weight: 600;
+            color: var(--dark-bg);
+        }
+
+        .procedure-content .special-note {
+            background-color: var(--light-bg);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            border-left: 4px solid var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Верхняя панель (копируется со всех страниц) -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info-top">
+                <span><i class="fas fa-map-marker-alt"></i> г. Минск, пр-т Партизанский, 146</span>
+                <span><i class="fas fa-phone"></i> +375(17)258-22-04</span>
+                <span><i class="fas fa-envelope"></i> zolak@minskedu.gov.by</span>
+            </div>
+            <div class="social-links-top">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Шапка сайта (копируется со всех страниц) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo-title">
+                <img src="../images/logo.png" alt="Логотип ДПМ Золак" class="site-logo">
+                <div class="site-name">
+                    <h2>ДДиМ "Золак"</h2>
+                    <p>Дворец Детей и Молодежи</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../one-window.html" class="active">Одно окно</a></li>
+                    <li><a href="../about.html">Об учреждении</a></li>
+                    <li><a href="../life.html">Жизнь учреждения</a></li>
+                    <li><a href="../students.html">Обучающимся</a></li>
+                    <li><a href="../parents.html">Родителям</a></li>
+                    <li><a href="../teachers.html">Педагогам</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <!-- Основной контент страницы -->
+    <main>
+        <section class="page-header-section">
+            <div class="container">
+                <h1>Административные процедуры</h1>
+                <nav class="breadcrumb">
+                    <a href="../index.html">Главная</a> / <a href="../one-window.html">Одно окно</a> / Административные
+                    процедуры
+                </nav>
+            </div>
+        </section>
+
+        <section class="content-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Перечень административных процедур</h2>
+                </div>
+
+                <div class="procedures-list">
+
+                    <!-- Процедура 1: Выдача справки о периоде работы -->
+                    <div class="procedure-item">
+                        <div class="procedure-header">
+                            <span class="title">Выдача справки о периоде работы</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="procedure-content">
+                            <div class="content-item">
+                                <span class="section-title">Ф.И.О. специалиста, отвечающего за выполнение процедуры и
+                                    предварительное консультирование по вопросам осуществления административной
+                                    процедуры</span>
+                                <span class="content-value">Инспектор по кадрам, <a href="tel:+375172639366"
+                                        class="phone">+375 17 263 93 66</a></span>
+                            </div>
+                            <div class="content-item">
+                                <span class="section-title">Режим работы по осуществлению административной процедуры
+                                    (приемные дни, время приема)</span>
+                                <span class="content-value">Понедельник - пятница, 9:00-18:00, обед с 13:00-14:00</span>
+                            </div>
+                            <div class="content-item">
+                                <span class="section-title">* Документы и (или) сведения, предоставляемые гражданином
+                                    для осуществления административной процедуры</span>
+                                <span class="content-value">Паспорт<br>Копия трудовой книжки</span>
+                            </div>
+                            <div class="content-item">
+                                <span class="section-title">Документы и (или) сведения, запрашиваемые государственным
+                                    органом или иной организацией (граждане могут представлять эти документы
+                                    самостоятельно)</span>
+                                <span class="content-value"></span> <!-- Пустое значение, если нет -->
+                            </div>
+                            <div class="content-item">
+                                <span class="section-title">Максимальный срок осуществления административной
+                                    процедуры</span>
+                                <span class="content-value">5 дней со дня подачи заявления</span>
+                            </div>
+                            <div class="content-item">
+                                <span class="section-title">Срок действия справки, другого документа (решения),
+                                    выдаваемого (принимаемого) при осуществлении административной процедуры</span>
+                                <span class="content-value">бессрочно</span>
+                            </div>
+                            <div class="content-item">
+                                <span class="section-title">Размер платы, взимаемой за выдачу справки или другого
+                                    документа</span>
+                                <span class="content-value">бесплатно</span>
+                            </div>
+                            <div class="content-item">
+                                <span class="section-title">Платежные реквизиты и место внесения платы за осуществление
+                                    административной процедуры</span>
+                                <span class="content-value"></span> <!-- Пустое значение, если нет -->
+                            </div>
+                            <div class="content-item">
+                                <span class="section-title">Нормативный правовой акт, в котором определена справка либо
+                                    иной документ</span>
+                                <span class="content-value"></span> <!-- Пустое значение, если нет -->
+                            </div>
+                            <div class="special-note">
+                                * Другие документы и (или) сведения, необходимые для осуществления административной
+                                процедуры, по запросу государственного органа (организации), в который обратился
+                                гражданин, в установленном порядке представляются государственными органами, иными
+                                организациями, к компетенции которых относится их выдача, а также могут быть
+                                представлены гражданином самостоятельно. От граждан могут быть истребованы документы,
+                                подтверждающие его полномочия, если с заявлением обращается представитель
+                                заинтересованного лица, а также иные документы в случаях, указанных в пункте 2 статьи 15
+                                Закона Республики Беларусь «Об основах административных процедур».
+                                <br><br>
+                                В случае полного освобождения гражданина в соответствии с законодательством от внесения
+                                платы, взимаемой при осуществлении административной процедуры, гражданин вместо
+                                документа, подтверждающего внесение платы, представляет документ, подтверждающий право
+                                на такое освобождение, а в случае частичного освобождения – помимо документа,
+                                подтверждающего внесение платы, - документ, подтверждающий право на частичное
+                                освобождение.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Процедура 2: Выдача справки о месте работы и занимаемой должности -->
+                    <div class="procedure-item">
+                        <div class="procedure-header">
+                            <span class="title">Выдача справки о месте работы и занимаемой должности</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="procedure-content">
+                            <div class="content-item">
+                                <span class="section-title">Ф.И.О. специалиста, отвечающего за выполнение процедуры и
+                                    предварительное консультирование по вопросам осуществления административной
+                                    процедуры</span>
+                                <span class="content-value">Инспектор по кадрам, <a href="tel:+375172639366"
+                                        class="phone">+375 17 263 93 66</a></span>
+                            </div>
+                            <div class="content-item">
+                                <span class="section-title">Режим работы по осуществлению административной процедуры
+                                    (приемные дни, время приема)</span>
+                                <span class="content-value">Понедельник - пятница, 9:00-18:00, обед с 13:00-14:00</span>
+                            </div>
+                            <div class="content-item">
+                                <span class="section-title">* Документы и (или) сведения, предоставляемые гражданином
+                                    для осуществления административной процедуры</span>
+                                <span class="content-value">Паспорт</span>
+                            </div>
+                            <div class="content-item">
+                                <span class="section-title">Документы и (или) сведения, запрашиваемые государственным
+                                    органом или иной организацией (граждане могут представлять эти документы
+                                    самостоятельно)</span>
+                                <span class="content-value"></span> <!-- Пустое значение, если нет -->
+                            </div>
+                            <div class="content-item">
+                                <span class="section-title">Максимальный срок осуществления административной
+                                    процедуры</span>
+                                <span class="content-value">5 дней со дня подачи заявления</span>
+                            </div>
+                            <div class="content-item">
+                                <span class="section-title">Срок действия справки, другого документа (решения),
+                                    выдаваемого (принимаемого) при осуществлении административной процедуры</span>
+                                <span class="content-value">бессрочно</span>
+                            </div>
+                            <div class="content-item">
+                                <span class="section-title">Размер платы, взимаемой за выдачу справки или другого
+                                    документа</span>
+                                <span class="content-value">бесплатно</span>
+                            </div>
+                            <div class="content-item">
+                                <span class="section-title">Платежные реквизиты и место внесения платы за осуществление
+                                    административной процедуры</span>
+                                <span class="content-value"></span> <!-- Пустое значение, если нет -->
+                            </div>
+                            <div class="content-item">
+                                <span class="section-title">Нормативный правовой акт, в котором определена справка либо
+                                    иной документ</span>
+                                <span class="content-value"></span> <!-- Пустое значение, если нет -->
+                            </div>
+                            <div class="special-note">
+                                * Другие документы и (или) сведения, необходимые для осуществления административной
+                                процедуры, по запросу государственного органа (организации), в который обратился
+                                гражданин, в установленном порядке представляются государственными органами, иными
+                                организациями, к компетенции которых относится их выдача, а также могут быть
+                                представлены гражданином самостоятельно.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Добавьте сюда другие административные процедуры по такому же шаблону -->
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер (копируется со всех страниц) -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 ДДиМ "Золак". Все права защищены.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="../about.html">Об учреждении</a></li>
+                    <li><a href="../one-window.html" class="active">Одно окно</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                    <li><a href="../one-window/privacy_policy.html">Политика конфиденциальности</a></li>
+                </ul>
+            </nav>
+            <div class="social-links-footer">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript для раскрытия/скрытия контента
+        document.addEventListener('DOMContentLoaded', function () {
+            const procedureHeaders = document.querySelectorAll('.procedure-header');
+
+            procedureHeaders.forEach(header => {
+                header.addEventListener('click', function () {
+                    const procedureItem = this.closest('.procedure-item');
+                    const content = procedureItem.querySelector('.procedure-content');
+                    const toggleIcon = this.querySelector('.toggle-icon');
+
+                    // Переключаем класс 'active' для иконки
+                    this.classList.toggle('active');
+
+                    // Переключаем видимость контента
+                    if (content.classList.contains('show')) {
+                        content.classList.remove('show');
+                        content.style.maxHeight = null; // Сбрасываем, чтобы анимация сработала при закрытии
+                    } else {
+                        content.classList.add('show');
+                        // Устанавливаем max-height равным высоте контента для анимации
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>График приема граждан - ДДиМ "Золак"</title>
+    <link rel="stylesheet" href="../style.css"> <!-- Подключаем общий CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Дополнительные стили для таблицы приема граждан */
+        .reception-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .reception-table th,
+        .reception-table td {
+            border: 1px solid var(--border-color);
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+            /* Выравниваем текст по верхнему краю */
+        }
+
+        .reception-table th {
+            background-color: var(--light-bg);
+            font-family: var(--heading-font);
+            font-weight: 700;
+            color: var(--dark-bg);
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .reception-table td {
+            background-color: #fff;
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        .reception-table tr:nth-child(even) td {
+            background-color: var(--light-bg);
+            /* Легкий фон для четных строк */
+        }
+
+        .reception-table .employee-info {
+            font-weight: 600;
+            color: var(--dark-bg);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: block;
+            /* Чтобы имя было на отдельной строке */
+        }
+
+        .reception-table .position {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .reception-table .phone {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            margin-top: 5px;
+            display: block;
+        }
+
+        .reception-table .day-header {
+            font-weight: 600;
+            color: var(--dark-bg);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .reception-table .time-slot {
+            display: block;
+            /* Каждый временной слот на новой строке */
+            margin-bottom: 5px;
+        }
+
+        .reception-table .note {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .reception-table .full-width-cell {
+            grid-column: 1 / -1;
+            /* Расширяем ячейку на всю ширину */
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.3rem;
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+        }
+
+        .reception-table .full-width-cell .day-header {
+            color: var(--light-text-color);
+        }
+
+        .reception-table .no-reception {
+            background-color: #f8d7da;
+            /* Цвет для дней без приема */
+            color: #721c24;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .reception-info-text {
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: var(--secondary-color);
+            text-align: center;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Верхняя панель (копируется со всех страниц) -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info-top">
+                <span><i class="fas fa-map-marker-alt"></i> г. Минск, пр-т Партизанский, 146</span>
+                <span><i class="fas fa-phone"></i> +375(17)258-22-04</span>
+                <span><i class="fas fa-envelope"></i> zolak@minskedu.gov.by</span>
+            </div>
+            <div class="social-links-top">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Шапка сайта (копируется со всех страниц) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo-title">
+                <img src="../images/logo.png" alt="Логотип ДПМ Золак" class="site-logo">
+                <div class="site-name">
+                    <h2>ДДиМ "Золак"</h2>
+                    <p>Дворец Детей и Молодежи</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../one-window.html" class="active">Одно окно</a></li>
+                    <li><a href="../about.html">Об учреждении</a></li>
+                    <li><a href="../life.html">Жизнь учреждения</a></li>
+                    <li><a href="../students.html">Обучающимся</a></li>
+                    <li><a href="../parents.html">Родителям</a></li>
+                    <li><a href="../teachers.html">Педагогам</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <!-- Основной контент страницы -->
+    <main>
+        <section class="page-header-section">
+            <div class="container">
+                <h1>График приема граждан</h1>
+                <nav class="breadcrumb">
+                    <a href="../index.html">Главная</a> / <a href="../one-window.html">Одно окно</a> / График приема
+                    граждан
+                </nav>
+            </div>
+        </section>
+
+        <section class="content-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2>График приема граждан</h2>
+                </div>
+
+                <table class="reception-table">
+                    <thead>
+                        <tr>
+                            <th class="full-width-cell" colspan="2">
+                                <span class="day-header employee-info">Веременко Светлана Георгиевна</span>
+                                <span class="position">Директор</span>
+                                <span class="phone">тел. +375(17) 375-51-01</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ПОНЕДЕЛЬНИК</td>
+                            <td class="no-reception">—</td>
+                        </tr>
+                        <tr>
+                            <td>ВТОРНИК</td>
+                            <td class="no-reception">—</td>
+                        </tr>
+                        <tr>
+                            <td>СРЕДА</td>
+                            <td>
+                                <span class="time-slot">15:00 - 20:00</span>
+                                <span class="note">Четвёртая среда месяца</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ЧЕТВЕРГ</td>
+                            <td class="no-reception">—</td>
+                        </tr>
+                        <tr>
+                            <td>ПЯТНИЦА</td>
+                            <td class="no-reception">—</td>
+                        </tr>
+                        <tr>
+                            <td>СУББОТА</td>
+                            <td>
+                                <span class="time-slot">09:00 - 14:00</span>
+                                <span class="note">Третья суббота месяца</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p class="reception-info-text">
+                    Предварительная запись на прием осуществляется по тел. +375(17)258-22-04 или в каб. № 301
+                </p>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер (копируется со всех страниц) -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 ДДиМ "Золак". Все права защищены.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="../about.html">Об учреждении</a></li>
+                    <li><a href="../one-window.html" class="active">Одно окно</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                    <li><a href="../one-window/privacy_policy.html">Политика конфиденциальности</a></li>
+                </ul>
+            </nav>
+            <div class="social-links-footer">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

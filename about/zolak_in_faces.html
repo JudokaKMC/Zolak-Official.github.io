@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>«Золак» в лицах - ДПМ "Золак"</title>
+    <link rel="stylesheet" href="../style.css"> <!-- Подключаем общий CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Стили для страницы "Золак в лицах" */
+        .zolak-faces-section {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .zolak-faces-section h3 {
+            color: var(--primary-color);
+            font-family: var(--heading-font);
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .person-block {
+            background-color: #f9f9f9;
+            border: 1px solid var(--border-color-light);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-small);
+            transition: box-shadow 0.2s ease;
+            display: flex;
+            /* Используем Flexbox для расположения фото и информации */
+            flex-wrap: wrap;
+            /* Позволяем блокам переноситься на новую строку на малых экранах */
+            gap: 20px;
+            /* Расстояние между элементами */
+            align-items: flex-start;
+            /* Выравниваем элементы по верхнему краю */
+        }
+
+        .person-block:hover {
+            box-shadow: var(--shadow-medium);
+        }
+
+        .person-photo {
+            flex: 0 0 150px;
+            /* Фиксированная ширина фото */
+            width: 150px;
+            height: 150px;
+            /* Задаем высоту, чтобы фото были одного размера */
+            overflow: hidden;
+            /* Обрезаем фото, если оно выходит за пределы */
+            border-radius: 8px;
+            background-color: var(--border-color-light);
+            /* Фон, пока фото не загрузилось */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .person-photo img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Масштабирует изображение, сохраняя пропорции и заполняя контейнер */
+            border-radius: 8px;
+        }
+
+        .person-info {
+            flex: 1;
+            /* Занимает оставшееся пространство */
+            min-width: 200px;
+            /* Минимальная ширина, чтобы контент не сжимался слишком сильно */
+        }
+
+        .person-block h4 {
+            font-family: var(--heading-font);
+            font-size: 1.5rem;
+            color: var(--dark-bg);
+            margin-top: 0;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .toggle-button {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .toggle-button:hover {
+            background-color: var(--primary-hover-color);
+        }
+
+        .collapsible-content {
+            display: none;
+            /* По умолчанию скрыто */
+            padding: 15px;
+            background-color: #eef7ee;
+            /* Светло-зеленый фон для контента */
+            border-left: 4px solid var(--primary-color);
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            flex-basis: 100%;
+            /* Блок контента занимает всю ширину */
+            margin-left: 180px;
+            /* Отступ слева, равный ширине фото + отступ */
+            box-sizing: border-box;
+            /* Учитываем padding и border в общей ширине */
+        }
+
+        .collapsible-content p {
+            margin: 0;
+        }
+
+        .collapsible-content a {
+            color: var(--dark-bg);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .collapsible-content a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .zolak-faces-section {
+                padding: 20px;
+            }
+
+            .zolak-faces-section h3 {
+                font-size: 1.7rem;
+                margin-bottom: 25px;
+            }
+
+            .person-block {
+                padding: 15px;
+                flex-direction: column;
+                /* Элементы располагаются друг под другом */
+                align-items: center;
+                /* Центрируем элементы */
+                text-align: center;
+                /* Центрируем текст */
+            }
+
+            .person-photo {
+                flex: none;
+                /* Снимаем ограничение flex */
+                width: 120px;
+                height: 120px;
+                margin-bottom: 15px;
+                /* Отступ снизу для фото */
+            }
+
+            .person-info {
+                width: 100%;
+                /* Занимает всю доступную ширину */
+            }
+
+            .toggle-button {
+                padding: 8px 15px;
+                font-size: 0.95rem;
+            }
+
+            .collapsible-content {
+                padding: 10px;
+                font-size: 0.95rem;
+                margin-left: 0;
+                /* Убираем отступ слева на маленьких экранах */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Верхняя панель (копируется со всех страниц) -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info-top">
+                <span><i class="fas fa-map-marker-alt"></i> г. Минск, пр-т Партизанский, 146</span>
+                <span><i class="fas fa-phone"></i> +375(17)258-22-04</span>
+                <span><i class="fas fa-envelope"></i> zolak@minskedu.gov.by</span>
+            </div>
+            <div class="social-links-top">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Шапка сайта (копируется со всех страниц) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo-title">
+                <img src="../images/logo.png" alt="Логотип ДДМ Золак" class="site-logo">
+                <div class="site-name">
+                    <h2>ДПМ "Золак"</h2>
+                    <p>Дворец Детей и Молодежи</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../one-window.html">Одно окно</a></li>
+                    <li><a href="../about.html" class="active">Об учреждении</a></li>
+                    <li><a href="../life.html">Жизнь учреждения</a></li>
+                    <li><a href="../students.html">Обучающимся</a></li>
+                    <li><a href="../parents.html">Родителям</a></li>
+                    <li><a href="../teachers.html">Педагогам</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <!-- Основной контент страницы -->
+    <main>
+        <section class="page-header-section">
+            <div class="container">
+                <h1>«Золак» в лицах</h1>
+                <nav class="breadcrumb">
+                    <a href="../index.html">Главная</a> / <a href="../about.html">Об учреждении</a> / «Золак» в лицах
+                </nav>
+            </div>
+        </section>
+
+        <section class="content-section section-padding">
+            <div class="container">
+                <div class="zolak-faces-section">
+                    <h3>Знакомьтесь с нашими сотрудниками!</h3>
+
+                    <!-- Авсянникова Алла Александровна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/avsyannikova.jpg" alt="Авсянникова Алла Александровна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Авсянникова Алла Александровна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('avsyannikova-content', this)">Подробнее</button>
+                            <div id="avsyannikova-content" class="collapsible-content">
+                                <p>
+                                    <a href="../about/zolak_in_faces/avsyannikova.html">
+                                        «Золак» в лицах: Авсянникова Алла Александровна
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Мамичева Александра Андреевна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/mamicheva.jpg" alt="Мамичева Александра Андреевна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Мамичева Александра Андреевна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('mamicheva-content', this)">Подробнее</button>
+                            <div id="mamicheva-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/mamicheva.html">
+                                        «Золак» в лицах: Мамичева Александра Андреевна
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Рассказова Анастасия Евгеньевна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/rasskazova.jpg" alt="Рассказова Анастасия Евгеньевна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Рассказова Анастасия Евгеньевна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('rasskazova-content', this)">Подробнее</button>
+                            <div id="rasskazova-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/rasskazova.html">
+                                        «Золак» в лицах: Рассказова Анастасия Евгеньевна >>>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Грицевич Анна Сергеевна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/gritsevich.jpg" alt="Грицевич Анна Сергеевна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Грицевич Анна Сергеевна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('gritsevich-content', this)">Подробнее</button>
+                            <div id="gritsevich-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/gritsevich.html">
+                                        «Золак» в лицах: Грицевич Анна Сергеевна >>>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Мартынова Алина Владимировна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/martynova.jpg" alt="Мартынова Алина Владимировна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Мартынова Алина Владимировна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('martynova-content', this)">Подробнее</button>
+                            <div id="martynova-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/martynova.html">
+                                        «Золак» в лицах: Мартынова Алина Владимировна >>>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Кашуба Ольга Викторовна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/kashuba.jpg" alt="Кашуба Ольга Викторовна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Кашуба Ольга Викторовна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('kashuba-content', this)">Подробнее</button>
+                            <div id="kashuba-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/kashuba.html">
+                                        Подробнее
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Угренинова Алла Хамитовна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/ugreninova.jpg" alt="Угренинова Алла Хамитовна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Угренинова Алла Хамитовна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('ugreninova-content', this)">Подробнее</button>
+                            <div id="ugreninova-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/ugreninova.html">
+                                        Подробнее
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Шумейкина Вероника Валерьевна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/shumeikina.jpg" alt="Шумейкина Вероника Валерьевна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Шумейкина Вероника Валерьевна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('shumeikina-content', this)">Подробнее</button>
+                            <div id="shumeikina-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/shumeikina.html">
+                                        Подробнее
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Чазов Игнат Андреевич -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/chazov.jpg" alt="Чазов Игнат Андреевич">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Чазов Игнат Андреевич</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('chazov-content', this)">Подробнее</button>
+                            <div id="chazov-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/chazov.html">
+                                        Подробнее
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Рудченко Ирина Сергеевна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/rudchenko.jpg" alt="Рудченко Ирина Сергеевна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«ЗОЛАК» в лицах: Рудченко Ирина Сергеевна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('rudchenko-content', this)">Подробнее</button>
+                            <div id="rudchenko-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/rudchenko.html">
+                                        Подробнее
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Гринкевич Наталья Борисовна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/grinkevich.jpg" alt="Гринкевич Наталья Борисовна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Гринкевич Наталья Борисовна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('grinkevich-content', this)">Подробнее</button>
+                            <div id="grinkevich-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/grinkevich.html">
+                                        Подробнее
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Тишалович Ольга Николаевна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/tishalovich.jpg" alt="Тишалович Ольга Николаевна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Тишалович Ольга Николаевна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('tishalovich-content', this)">Подробнее</button>
+                            <div id="tishalovich-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/tishalovich.html">
+                                        ЗОЛАК В ЛИЦАХ: ТИШАЛОВИЧ ОЛЬГА НИКОЛАЕВНА
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Бартошевич Екатерина Сергеевна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/bartoshevich.jpg" alt="Бартошевич Екатерина Сергеевна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Бартошевич Екатерина Сергеевна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('bartoshevich-content', this)">Подробнее</button>
+                            <div id="bartoshevich-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/bartoshevich.html">
+                                        «ЗОЛАК» В ЛИЦАХ: БАРТОШЕВИЧ ЕКАТЕРИНА СЕРГЕЕВНА
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ковалёнок Татьяна Васильевна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/kovalyonok.jpg" alt="Ковалёнок Татьяна Васильевна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Ковалёнок Татьяна Васильевна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('kovalyonok-content', this)">Подробнее</button>
+                            <div id="kovalyonok-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/kovalyonok.html">
+                                        «Золак» в лицах: Ковалёнок Татьяна Васильевна
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Скакалина-Рисовец Екатерина Ивановна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/skakalina.jpg" alt="Скакалина-Рисовец Екатерина Ивановна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Скакалина-Рисовец Екатерина Ивановна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('skakalina-content', this)">Подробнее</button>
+                            <div id="skakalina-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/skakalina.html">
+                                        «Золак» в лицах: Скакалина-Рисевец Екатерина Ивановна
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Барановская Инна Аркадьевна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/baranovskaya.jpg" alt="Барановская Инна Аркадьевна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Барановская Инна Аркадьевна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('baranovskaya-content', this)">Подробнее</button>
+                            <div id="baranovskaya-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/baranovskaya.html">
+                                        «Золак» в лицах: Барановская Инна Аркадьевна
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Жукова Ирина Анатольевна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/zhukova.jpg" alt="Жукова Ирина Анатольевна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Жукова Ирина Анатольевна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('zhukova-content', this)">Подробнее</button>
+                            <div id="zhukova-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/zhukova.html">
+                                        «Золак» в лицах: Жукова Ирина Анатольевна
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Колерова Тамара Михайловна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/kolerova.jpg" alt="Колерова Тамара Михайловна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Колерова Тамара Михайловна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('kolerova-content', this)">Подробнее</button>
+                            <div id="kolerova-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/kolerova.html">
+                                        «Золак» в лицах: Колерова Тамара Михайловна
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Кудравец Татьяна Николаевна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/kudravets.jpg" alt="Кудравец Татьяна Николаевна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Кудравец Татьяна Николаевна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('kudravets-content', this)">Подробнее</button>
+                            <div id="kudravets-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/kudravets.html">
+                                        «Золак» в лицах: Кудравец Татьяна Николаевна
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Лаптенок Дарья Александровна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/laptenok.jpg" alt="Лаптенок Дарья Александровна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Лаптенок Дарья Александровна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('laptenok-content', this)">Подробнее</button>
+                            <div id="laptenok-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/laptenok.html">
+                                        «Золак» в лицах: Лаптенок Дарья Александровна
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ковалева Наталья Леонидовна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/kovaleva.jpg" alt="Ковалева Наталья Леонидовна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Ковалева Наталья Леонидовна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('kovaleva-content', this)">Подробнее</button>
+                            <div id="kovaleva-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/kovaleva.html">
+                                        «Золак» в лицах: Ковалева Наталья Леонидовна
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Левченко Алла Леонидовна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/levchenko.jpg" alt="Левченко Алла Леонидовна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Левченко Алла Леонидовна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('levchenko-content', this)">Подробнее</button>
+                            <div id="levchenko-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/levchenko.html">
+                                        «Золак» в лицах: Левченко Алла Леонидовна
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Долгих Олег Васильевич -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/dolgih.jpg" alt="Долгих Олег Васильевич">
+                        </div>
+                        <div class="person-info">
+                            <h4>Золак в лицах: Долгих Олег Васильевич</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('dolgih-content', this)">Подробнее</button>
+                            <div id="dolgih-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/dolgih.html">
+                                        Золак в лицах: Долгих Олег Васильевич
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Шамрук Иван Павлович -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/shamruk.jpg" alt="Шамрук Иван Павлович">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак в лицах»: Шамрук Иван Павлович</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('shamruk-content', this)">Подробнее</button>
+                            <div id="shamruk-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/shamruk.html">
+                                        «Золак в лицах»: Шамрук Иван Павлович
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Бусло Светлана Николаевна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/buslo.jpg" alt="Бусло Светлана Николаевна">
+                        </div>
+                        <div class="person-info">
+                            <h4>Золак в лицах: Бусло Светлана Николаевна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('buslo-content', this)">Подробнее</button>
+                            <div id="buslo-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/buslo.html">
+                                        Золак в лицах: Бусло Светлана Николаевна
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Янушкевич Владимир Александрович -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/yanushkevich.jpg" alt="Янушкевич Владимир Александрович">
+                        </div>
+                        <div class="person-info">
+                            <h4>Золак в лицах: Янушкевич Владимир Александрович</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('yanushkevich-content', this)">Подробнее</button>
+                            <div id="yanushkevich-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/yanushkevich.html">
+                                        Золак в лицах: Янушкевич Владимир Александрович
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Савченко Наталья Борисовна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/savchenko.jpg" alt="Савченко Наталья Борисовна">
+                        </div>
+                        <div class="person-info">
+                            <h4>Золак в лицах: Савченко Наталья Борисовна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('savchenko-content', this)">Подробнее</button>
+                            <div id="savchenko-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/savchenko.html">
+                                        Золак в лицах: Савченко Наталья Борисовна
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Авдеенко Нина Владимировна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/avdeenko.jpg" alt="Авдеенко Нина Владимировна">
+                        </div>
+                        <div class="person-info">
+                            <h4>Золак в лицах: Авдеенко Нина Владимировна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('avdeenko-content', this)">Подробнее</button>
+                            <div id="avdeenko-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/avdeenko.html">
+                                        Золак в лицах: Авдеенко Нина Владимировна
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Новашинская Юлия Александровна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/novashinskaya.jpg" alt="Новашинская Юлия Александровна">
+                        </div>
+                        <div class="person-info">
+                            <h4>Золак в лицах: Новашинская Юлия Александровна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('novashinskaya-content', this)">Подробнее</button>
+                            <div id="novashinskaya-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/novashinskaya.html">
+                                        Золак в лицах: Новашинская Юлия Александровна
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Кравчук Анна Валерьевна -->
+                    <div class="person-block">
+                        <div class="person-photo">
+                            <img src="images/kravchuk.jpg" alt="Кравчук Анна Валерьевна">
+                        </div>
+                        <div class="person-info">
+                            <h4>«Золак» в лицах: Кравчук Анна Валерьевна</h4>
+                            <button class="toggle-button"
+                                onclick="toggleContent('kravchuk-content', this)">Подробнее</button>
+                            <div id="kravchuk-content" class="collapsible-content">
+                                <p>
+                                    <a href="zolak_in_faces/kravchuk.html">
+                                        «Золак» в лицах: Кравчук Анна Валерьевна
+                                    </a>
+                                </p>
+                                <p>
+                                    Любовь к музыке и желание связать с ней свою жизнь зародились у Анны еще в детстве.
+                                    Вокальная студия и образцовый ансамбль народного танца «Каролинка» в г.Брест, 12 лет
+                                    концертов и гастролей определили выбор будущей профессии.
+                                </p>
+                                <p>
+                                    Гродненский колледж искусств, а затем БГУКИ и мечты стали сбываться.
+                                </p>
+                                <p>
+                                    Затем, казалось бы, случайное распределение в ДДиМ «Золак» г.Минска.
+                                </p>
+                                <p>
+                                    И вот более 30 детей и подростков от 4 до 18 лет вокального коллектива «Pro`счастье»
+                                    и вновь конкурсы, фестивали и благотворительные акции.
+                                </p>
+                                <p>
+                                    Анна Валерьевна приумножает свои знания и сегодня она вновь студентка БГУКИ и
+                                    получает вторую ступень высшего образования и пишет магистерскую диссертацию в
+                                    области эстетического воспитания детей средствами вокального искусства.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер (копируется со всех страниц) -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 ДДиМ "Золак". Все права защищены.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="../about.html" class="active">Об учреждении</a></li>
+                    <li><a href="../one-window.html">Одно окно</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                    <li><a href="../one-window/privacy_policy.html">Политика конфиденциальности</a></li>
+                </ul>
+            </nav>
+            <div class="social-links-footer">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script> <!-- Подключаем скрипт для toggleContent и мобильного меню -->
+</body>
+
+</html>

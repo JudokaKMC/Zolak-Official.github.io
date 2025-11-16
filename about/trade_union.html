@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профсоюз - ДДиМ "Золак"</title>
+    <link rel="stylesheet" href="../style.css"> <!-- Подключаем общий CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Стили для страницы "Профсоюз" */
+        .union-section {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .union-section h3 {
+            color: var(--primary-color);
+            font-family: var(--heading-font);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .union-section .content-block {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .union-section .content-block:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .union-section .content-block h4 {
+            font-size: 1.3rem;
+            color: var(--dark-bg);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .union-section .content-block h4 .icon {
+            color: var(--primary-color);
+        }
+
+        .union-section .item {
+            margin-bottom: 10px;
+        }
+
+        .union-section .item .position {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .union-section .item .name {
+            font-weight: 700;
+            color: var(--dark-bg);
+        }
+
+        .union-section .item .contact-info {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .union-section .item .contact-info .icon {
+            margin-right: 8px;
+            color: var(--secondary-color);
+        }
+
+        .union-section .item .contact-info .phone {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* Стиль для списка ссылок */
+        .link-list ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .link-list li {
+            margin-bottom: 10px;
+        }
+
+        .link-list .link {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .link-list .link:hover {
+            color: var(--primary-hover-color);
+            text-decoration: underline;
+        }
+
+        .link-list .link .icon {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        /* Стиль для горячей линии */
+        .hotline {
+            background-color: var(--primary-color-lighter);
+            border: 1px dashed var(--primary-color);
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .hotline h4 {
+            font-size: 1.3rem;
+            color: var(--dark-bg);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hotline .hotline-info {
+            font-size: 1rem;
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .hotline .hotline-info p {
+            margin-bottom: 10px;
+        }
+
+        .hotline .hotline-info .phone {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .hotline .hotline-info .time {
+            font-style: italic;
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Верхняя панель (копируется со всех страниц) -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info-top">
+                <span><i class="fas fa-map-marker-alt"></i> г. Минск, пр-т Партизанский, 146</span>
+                <span><i class="fas fa-phone"></i> +375(17)258-22-04</span>
+                <span><i class="fas fa-envelope"></i> zolak@minskedu.gov.by</span>
+            </div>
+            <div class="social-links-top">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Шапка сайта (копируется со всех страниц) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo-title">
+                <img src="../images/logo.png" alt="Логотип ДПМ Золак" class="site-logo">
+                <div class="site-name">
+                    <h2>ДДиМ "Золак"</h2>
+                    <p>Дворец Детей и Молодежи</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../one-window.html">Одно окно</a></li>
+                    <li><a href="../about.html" class="active">Об учреждении</a></li>
+                    <li><a href="../life.html">Жизнь учреждения</a></li>
+                    <li><a href="../students.html">Обучающимся</a></li>
+                    <li><a href="../parents.html">Родителям</a></li>
+                    <li><a href="../teachers.html">Педагогам</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <!-- Основной контент страницы -->
+    <main>
+        <section class="page-header-section">
+            <div class="container">
+                <h1>Профсоюз</h1>
+                <nav class="breadcrumb">
+                    <a href="../index.html">Главная</a> / <a href="../about.html">Об учреждении</a> / Профсоюз
+                </nav>
+            </div>
+        </section>
+
+        <section class="content-section section-padding">
+            <div class="container">
+                <div class="union-section">
+                    <h3>Профсоюз</h3>
+
+                    <!-- Руководство профсоюзного комитета -->
+                    <div class="content-block">
+                        <h4><span class="icon"><i class="fas fa-user-tie"></i></span> Председатель профсоюзного комитета
+                        </h4>
+                        <div class="item">
+                            <div class="name">Ковалёнок Татьяна Васильевна</div>
+                            <div class="contact-info">
+                                <p><span class="icon"><i class="fas fa-phone"></i></span> <span
+                                        class="phone">+375-17-240-34-39</span></p>
+                                <p><span class="icon"><i class="fas fa-map-marker-alt"></i></span> каб. 206</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Профсоюзный комитет -->
+                    <div class="content-block">
+                        <h4><span class="icon"><i class="fas fa-users"></i></span> Профсоюзный комитет</h4>
+                        <div class="item">
+                            <div class="position">Председатель:</div>
+                            <div class="name">Ковалёнок Татьяна Васильевна</div>
+                        </div>
+                        <div class="item">
+                            <div class="position">Заместитель председателя:</div>
+                            <div class="name">Борунова Татьяна Александровна</div>
+                        </div>
+                        <div class="item">
+                            <div class="name">Сабельникова Ирина Евгеньевна</div>
+                        </div>
+                        <div class="item">
+                            <div class="name">Савченко Наталья Борисовна</div>
+                        </div>
+                        <div class="item">
+                            <div class="name">Антипенко Андрей Владимирович</div>
+                        </div>
+                        <div class="item">
+                            <div class="name">Исакович Екатерина Васильевна</div>
+                        </div>
+                        <div class="item">
+                            <div class="name">Багрецова Марина Валерьевна</div>
+                        </div>
+                    </div>
+
+                    <!-- Ревизионная комиссия -->
+                    <div class="content-block">
+                        <h4><span class="icon"><i class="fas fa-chart-line"></i></span> Ревизионная комиссия:</h4>
+                        <div class="item">
+                            <div class="name">Шеланкова Ульяна Валерьевна</div>
+                        </div>
+                        <div class="item">
+                            <div class="name">Шугало Ирина Юрьевна</div>
+                        </div>
+                        <div class="item">
+                            <div class="name">Рябцева Ольга Алексеевна</div>
+                        </div>
+                    </div>
+
+                    <!-- Общественный инспектор по охране труда -->
+                    <div class="content-block">
+                        <h4><span class="icon"><i class="fas fa-shield-alt"></i></span> Общественный инспектор по охране
+                            труда:</h4>
+                        <div class="item">
+                            <div class="name">Шамрук Иван Павлович</div>
+                        </div>
+                        <div class="item">
+                            <div class="name">Нефёдова Оксана Леонидовна</div>
+                        </div>
+                    </div>
+
+                    <!-- Документы -->
+                    <div class="content-block">
+                        <h4><span class="icon"><i class="fas fa-file-alt"></i></span> Документы</h4>
+                        <div class="link-list">
+                            <ul>
+                                <li>
+                                    <a href="https://drive.google.com/file/d/1QcjDLHm3V6jyC0hDLC0-gRHmE-11CowK/view?usp=sharing"
+                                        class="link"><span class="icon"><i class="fas fa-file-pdf"></i></span>
+                                        КОНЦЕПЦИЯ КАДРОВОЙ ПОЛИТИКИ ФЕДЕРАЦИИ ПРОФСОЮЗОВ БЕЛАРУСИ</a>
+                                </li>
+                                <li>
+                                    <a href="https://drive.google.com/file/d/1BAoUfYujKSqUsC0P9W6sHrpISt1F17tu/view?usp=sharing"
+                                        class="link"><span class="icon"><i class="fas fa-file-pdf"></i></span>
+                                        УСТАВ БЕЛОРУССКОГО ПРОФЕССИОНАЛЬНОГО СОЮЗА РАБОТНИКОВ ОБРАЗОВАНИЯ И НАУКИ</a>
+                                </li>
+                                <li>
+                                    <a href="https://docs.google.com/document/d/1pPEnYLnE9rPY1xkMMwthBcg_KOxaesMj/edit?usp=sharing&ouid=100746152870955679883&rtpof=true&sd=true"
+                                        class="link"><span class="icon"><i class="fas fa-file-pdf"></i></span>
+                                        Положение о первичной профсоюзной организации Белорусского профессионального
+                                        союза работников образования и науки</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Сайты вышестоящих организаций -->
+                    <div class="content-block">
+                        <h4><span class="icon"><i class="fas fa-sitemap"></i></span> Сайты вышестоящих организаций</h4>
+                        <div class="link-list">
+                            <ul>
+                                <li>
+                                    <a href="http://profs-zav.minsk.edu.by" target="_blank" class="link"><span
+                                            class="icon"><i class="fas fa-link"></i></span> Заводская районная г. Минска
+                                        организация Белорусского профсоюза работников образования и науки</a>
+                                </li>
+                                <li>
+                                    <a href="http://profobraz.by" target="_blank" class="link"><span class="icon"><i
+                                                class="fas fa-link"></i></span> Минский городская организация
+                                        Белорусского профессионального союза работников образования и науки</a>
+                                </li>
+                                <li>
+                                    <a href="https://estu.1prof.by/" target="_blank" class="link"><span class="icon"><i
+                                                class="fas fa-link"></i></span> Белорусский профессиональный союз
+                                        работников образования и науки</a>
+                                </li>
+                                <li>
+                                    <a href="http://fpb.by/ru" target="_blank" class="link"><span class="icon"><i
+                                                class="fas fa-link"></i></span> Федерация профсоюзов Беларуси</a>
+                                </li>
+                                <li>
+                                    <a href="https://vk.com/belestu" target="_blank" class="link"><span class="icon"><i
+                                                class="fab fa-vk"></i></span> Социальная сеть ВКонтакте</a>
+                                </li>
+                                <li>
+                                    <a href="https://t.me/BTUESW" target="_blank" class="link"><span class="icon"><i
+                                                class="fab fa-telegram-plane"></i></span> Канал в Телеграм</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/profobrazinauki/" target="_blank"
+                                        class="link"><span class="icon"><i class="fab fa-instagram"></i></span>
+                                        Социальная сеть Instagram</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Горячая линия -->
+                    <div class="hotline">
+                        <h4><span class="icon"><i class="fas fa-phone-volume"></i></span> ГОРЯЧАЯ ЛИНИЯ</h4>
+                        <div class="hotline-info">
+                            <p>
+                                У Профсоюза работников образовании и науки работает «горячая линия» по вопросам, касаемо
+                                Указа Президента Республики Беларусь № 429 от 21 ноября 2024 г., которым корректируется
+                                Указ № 27 от 18 января 2019 года «Об оплате труда работников бюджетных организаций».
+                            </p>
+                            <p>
+                                📌 телефон «горячей линии»: <span class="phone">+375(17)2700453</span>
+                            </p>
+                            <p class="time">
+                                📌 время работы – с 10.00 до 13.00
+                            </p>
+                        </div>
+                        <div class="hotline-info" style="margin-top: 15px;">
+                            <p>
+                                👥 В Минской городской организации Профсоюза работает "горячая линия" по вопросам Указа
+                                Президента Республики Беларусь №429 от 21.11.2024, которым корректируется Указ №27 от
+                                18.01.2019 «Об оплате труда работников бюджетных организаций».
+                            </p>
+                            <p>
+                                ☎️Задать вопрос и получить консультацию специалиста можно в будние дни с 10:00 до 13:00
+                                по телефону <span class="phone">+375 (17) 397 28 02</span>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер (копируется со всех страниц) -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 ДДиМ "Золак". Все права защищены.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="../about.html" class="active">Об учреждении</a></li>
+                    <li><a href="../one-window.html">Одно окно</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                    <li><a href="../one-window/privacy_policy.html">Политика конфиденциальности</a></li>
+                </ul>
+            </nav>
+            <div class="social-links-footer">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript для обработки ссылок, если нужно добавить их динамически или проверить
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('.union-section .link');
+            links.forEach(link => {
+                // Пример: если ссылка - это '#', то выводим сообщение
+                if (link.getAttribute('href') === '#') {
+                    link.addEventListener('click', function (event) {
+                        event.preventDefault(); // Предотвращаем стандартное действие
+                        alert('Ссылка на данный документ пока не добавлена. Пожалуйста, обратитесь к администрации.');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

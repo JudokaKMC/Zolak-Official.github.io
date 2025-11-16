@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>График работы Администрации - ДДиМ "Золак"</title>
+    <link rel="stylesheet" href="../style.css"> <!-- Подключаем общий CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Дополнительные стили для таблицы */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            border: 1px solid var(--border-color);
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+            /* Выравниваем текст по верхнему краю */
+        }
+
+        .schedule-table th {
+            background-color: var(--light-bg);
+            font-family: var(--heading-font);
+            font-weight: 700;
+            color: var(--dark-bg);
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .schedule-table td {
+            background-color: #fff;
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        .schedule-table tr:nth-child(even) td {
+            background-color: var(--light-bg);
+            /* Легкий фон для четных строк */
+        }
+
+        .schedule-table .employee-name {
+            font-weight: 600;
+            color: var(--dark-bg);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: block;
+            /* Чтобы имя было на отдельной строке */
+        }
+
+        .schedule-table .position {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .schedule-table .day-header {
+            font-weight: 600;
+            color: var(--dark-bg);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .schedule-table .time-slot {
+            display: block;
+            /* Каждый временной слот на новой строке */
+            margin-bottom: 5px;
+        }
+
+        .schedule-table .note {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .schedule-table .full-width-cell {
+            grid-column: 1 / -1;
+            /* Расширяем ячейку на всю ширину */
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.3rem;
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+        }
+
+        .schedule-table .full-width-cell .day-header {
+            color: var(--light-text-color);
+        }
+
+        .schedule-table .weekend-cell {
+            background-color: #f8d7da;
+            /* Цвет для выходных */
+            color: #721c24;
+            font-weight: 600;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Верхняя панель (копируется со всех страниц) -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info-top">
+                <span><i class="fas fa-map-marker-alt"></i> г. Минск, пр-т Партизанский, 146</span>
+                <span><i class="fas fa-phone"></i> +375(17)258-22-04</span>
+                <span><i class="fas fa-envelope"></i> zolak@minskedu.gov.by</span>
+            </div>
+            <div class="social-links-top">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Шапка сайта (копируется со всех страниц) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo-title">
+                <img src="../images/logo.png" alt="Логотип ДПМ Золак" class="site-logo">
+                <div class="site-name">
+                    <h2>ДПМ "Золак"</h2>
+                    <p>Дворец Детей и Молодежи</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../one-window.html" class="active">Одно окно</a></li>
+                    <li><a href="../about.html">Об учреждении</a></li>
+                    <li><a href="../life.html">Жизнь учреждения</a></li>
+                    <li><a href="../students.html">Обучающимся</a></li>
+                    <li><a href="../parents.html">Родителям</a></li>
+                    <li><a href="../teachers.html">Педагогам</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <!-- Основной контент страницы -->
+    <main>
+        <section class="page-header-section">
+            <div class="container">
+                <h1>График работы Администрации</h1>
+                <nav class="breadcrumb">
+                    <a href="../index.html">Главная</a> / <a href="../one-window.html">Одно окно</a> / График работы
+                    Администрации
+                </nav>
+            </div>
+        </section>
+
+        <section class="content-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2>График работы администрации</h2>
+                </div>
+
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th class="full-width-cell" colspan="2"><span class="day-header">Веременко С. Г.</span><span
+                                    class="position">Директор</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ПОНЕДЕЛЬНИК</td>
+                            <td>
+                                <span class="time-slot">08:30 - 13:00</span>
+                                <span class="time-slot">14:00 - 17:30</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ВТОРНИК</td>
+                            <td>
+                                <span class="time-slot">08:30 - 13:00</span>
+                                <span class="time-slot">14:00 - 17:30</span>
+                                <span class="note">3-й вторник: 08:30 - 13:00, 14:00 - 17:00</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>СРЕДА</td>
+                            <td>
+                                <span class="time-slot">1-я, 3-я, 5-я среда: 08:30 - 13:00, 14:00 - 17:30</span>
+                                <span class="note">С 8:00 до 13:00 личный прием граждан</span>
+                                <span class="time-slot">2-я среда: 08:00 - 13:00, 14:00 - 17:00</span>
+                                <span class="time-slot">4-я среда: 11:00 - 13:00, 14:00 - 20:00</span>
+                                <span class="note">С 15:00 до 20:00 личный прием граждан</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ЧЕТВЕРГ</td>
+                            <td>
+                                <span class="time-slot">08:30 - 13:00</span>
+                                <span class="time-slot">14:00 - 17:30</span>
+                                <span class="note">3-й четверг: 08:30 - 13:00, 14:00 - 17:00</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ПЯТНИЦА</td>
+                            <td>
+                                <span class="time-slot">08:30 - 13:00</span>
+                                <span class="time-slot">14:00 - 16:30</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="weekend-cell">СУББОТА</td>
+                            <td class="weekend-cell">
+                                <span class="time-slot">1, 2, 4, 5 суббота: выходной день</span>
+                                <span class="time-slot">3-я суббота: рабочий день, 09:00 - 14:00</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="weekend-cell">ВОСКРЕСЕНЬЕ</td>
+                            <td class="weekend-cell">Выходной день</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th class="full-width-cell" colspan="2"><span class="day-header">Волкова Т. А.</span><span
+                                    class="position">Заместитель директора по УМР</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ПОНЕДЕЛЬНИК</td>
+                            <td>
+                                <span class="time-slot">1, 2, 4 понедельник: 09:00 - 13:00, 13:45 - 18:00</span>
+                                <span class="time-slot">3-й понедельник: 11:00 - 13:00, 13:45 - 20:00</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ВТОРНИК</td>
+                            <td>
+                                <span class="time-slot">09:00 - 13:00</span>
+                                <span class="time-slot">13:45 - 18:00</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>СРЕДА</td>
+                            <td>
+                                <span class="time-slot">09:00 - 13:00</span>
+                                <span class="time-slot">13:45 - 18:00</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ЧЕТВЕРГ</td>
+                            <td>
+                                <span class="time-slot">09:00 - 13:00</span>
+                                <span class="time-slot">13:45 - 18:00</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ПЯТНИЦА</td>
+                            <td>
+                                <span class="time-slot">09:00 - 13:00</span>
+                                <span class="time-slot">13:45 - 16:45</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="weekend-cell">СУББОТА</td>
+                            <td class="weekend-cell">
+                                <span class="time-slot">2, 3, 4, 5 суббота: выходной день</span>
+                                <span class="time-slot">1 суббота: рабочий день, 09:00 - 13:00</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="weekend-cell">ВОСКРЕСЕНЬЕ</td>
+                            <td class="weekend-cell">Выходной день</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th class="full-width-cell" colspan="2"><span class="day-header">Лесица А. Е.</span><span
+                                    class="position">Заместитель директора по УВР</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ПОНЕДЕЛЬНИК</td>
+                            <td>
+                                <span class="time-slot">09:00 - 13:00</span>
+                                <span class="time-slot">13:45 - 18:00</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ВТОРНИК</td>
+                            <td>
+                                <span class="time-slot">1, 3, 4 вторник: 09:00 - 13:00, 13:45 - 18:00</span>
+                                <span class="time-slot">2-й вторник: 11:00 - 13:00, 13:45 - 20:00</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>СРЕДА</td>
+                            <td>
+                                <span class="time-slot">09:00 - 13:00</span>
+                                <span class="time-slot">13:45 - 18:00</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ЧЕТВЕРГ</td>
+                            <td>
+                                <span class="time-slot">09:00 - 13:00</span>
+                                <span class="time-slot">13:45 - 18:00</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ПЯТНИЦА</td>
+                            <td>
+                                <span class="time-slot">09:00 - 13:00</span>
+                                <span class="time-slot">13:45 - 16:45</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="weekend-cell">СУББОТА</td>
+                            <td class="weekend-cell">
+                                <span class="time-slot">1, 3 суббота: выходной день</span>
+                                <span class="time-slot">2, 4 суббота: рабочий день, 09:00 - 13:00</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="weekend-cell">ВОСКРЕСЕНЬЕ</td>
+                            <td class="weekend-cell">выходной</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th class="full-width-cell" colspan="2"><span class="day-header">Жигарь С. А.</span><span
+                                    class="position">Заместитель директора по ХР</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ПОНЕДЕЛЬНИК</td>
+                            <td>
+                                <span class="time-slot">08:30 - 13:00</span>
+                                <span class="time-slot">13:45 - 17:30</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ВТОРНИК</td>
+                            <td>
+                                <span class="time-slot">8:30 - 13:00</span>
+                                <span class="time-slot">13:45 - 17:30</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>СРЕДА</td>
+                            <td>
+                                <span class="time-slot">8:30 - 13:00</span>
+                                <span class="time-slot">13:45 - 17:30</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ЧЕТВЕРГ</td>
+                            <td>
+                                <span class="time-slot">08:30 - 13:00</span>
+                                <span class="time-slot">13:45 - 17:30</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ПЯТНИЦА</td>
+                            <td>
+                                <span class="time-slot">08:30 - 13:00</span>
+                                <span class="time-slot">13:45 - 16:15</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="weekend-cell">СУББОТА</td>
+                            <td class="weekend-cell">выходной</td>
+                        </tr>
+                        <tr>
+                            <td class="weekend-cell">ВОСКРЕСЕНЬЕ</td>
+                            <td class="weekend-cell">выходной</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер (копируется со всех страниц) -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 ДДиМ "Золак". Все права защищены.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="../about.html">Об учреждении</a></li>
+                    <li><a href="../one-window.html" class="active">Одно окно</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                    <li><a href="../one-window/privacy_policy.html">Политика конфиденциальности</a></li>
+                </ul>
+            </nav>
+            <div class="social-links-footer">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

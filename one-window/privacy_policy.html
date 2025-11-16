@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Политика конфиденциальности - ДДиМ "Золак"</title>
+    <link rel="stylesheet" href="../style.css"> <!-- Подключаем общий CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Стили для раздела "Политика конфиденциальности" */
+        .privacy-policy-section {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+        }
+
+        .privacy-header {
+            background-color: var(--light-bg);
+            padding: 18px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease;
+        }
+
+        .privacy-header:hover {
+            background-color: var(--border-color);
+        }
+
+        .privacy-header .title {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--dark-bg);
+        }
+
+        .privacy-header .toggle-icon {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .privacy-header.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .privacy-content {
+            padding: 25px;
+            max-height: 0;
+            /* Начальное состояние - скрыто */
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+            background-color: #fff;
+            border-top: none;
+        }
+
+        .privacy-content.show {
+            max-height: 2000px;
+            /* Достаточно для большого контента */
+        }
+
+        .privacy-content p {
+            font-size: 1rem;
+            color: var(--text-color);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .privacy-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .privacy-content .section-title {
+            font-weight: 600;
+            color: var(--dark-bg);
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            display: block;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .privacy-content .note {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-top: 8px;
+        }
+
+        .privacy-content .nested-list {
+            margin-top: 10px;
+            margin-bottom: 15px;
+            margin-left: 20px;
+            list-style-type: lower-alpha;
+            /* a, b, c... */
+        }
+
+        .privacy-content .nested-list li {
+            margin-bottom: 8px;
+        }
+
+        .privacy-content .application-link {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .privacy-content .application-link:hover {
+            color: var(--primary-hover-color);
+            text-decoration: underline;
+        }
+
+        /* Стиль для ссылки, которая была в вашем описании (>>>) */
+        .content-with-arrow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            /* Расстояние между текстом и стрелкой/ссылкой */
+            margin-bottom: 15px;
+            /* Отступ для всего блока */
+        }
+
+        .content-with-arrow p {
+            margin-bottom: 0;
+            /* Убираем нижний отступ у параграфа */
+        }
+
+        .content-with-arrow .arrow-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .content-with-arrow .arrow-link:hover {
+            color: var(--primary-hover-color);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Верхняя панель (копируется со всех страниц) -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info-top">
+                <span><i class="fas fa-map-marker-alt"></i> г. Минск, пр-т Партизанский, 146</span>
+                <span><i class="fas fa-phone"></i> +375(17)258-22-04</span>
+                <span><i class="fas fa-envelope"></i> zolak@minskedu.gov.by</span>
+            </div>
+            <div class="social-links-top">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Шапка сайта (копируется со всех страниц) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo-title">
+                <img src="../images/logo.png" alt="Логотип ДПМ Золак" class="site-logo">
+                <div class="site-name">
+                    <h2>ДДиМ "Золак"</h2>
+                    <p>Дворец Детей и Молодежи</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../one-window.html" class="active">Одно окно</a></li>
+                    <li><a href="../about.html">Об учреждении</a></li>
+                    <li><a href="../life.html">Жизнь учреждения</a></li>
+                    <li><a href="../students.html">Обучающимся</a></li>
+                    <li><a href="../parents.html">Родителям</a></li>
+                    <li><a href="../teachers.html">Педагогам</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <!-- Основной контент страницы -->
+    <main>
+        <section class="page-header-section">
+            <div class="container">
+                <h1>Политика конфиденциальности</h1>
+                <nav class="breadcrumb">
+                    <a href="../index.html">Главная</a> / <a href="../one-window.html">Одно окно</a> / Политика
+                    конфиденциальности
+                </nav>
+            </div>
+        </section>
+
+        <section class="content-section section-padding">
+            <div class="container">
+
+                <!-- Блок: Согласие на обработку персональных данных -->
+                <div class="privacy-policy-section">
+                    <div class="privacy-header">
+                        <span class="title">Согласие на обработку персональных данных</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="privacy-content">
+                        <div class="content-with-arrow">
+                            <p>>>> Согласие на обработку персональных данных</p>
+                            <!-- Замените '#' на реальную ссылку, если она имеется -->
+                            <a href="https://cpd.by/zachita-personalnyh-dannyh/grajdaninu/soglasiye-na-obrabotku-personalnykh-dannykh/"
+                                class="arrow-link">Открыть</a>
+                        </div>
+                        <!-- Здесь может быть дополнительный текст или ссылка на форму согласия -->
+                    </div>
+                </div>
+
+                <!-- Блок: Политика в отношении обработки cookie -->
+                <div class="privacy-policy-section">
+                    <div class="privacy-header">
+                        <span class="title">Политика в отношении обработки cookie</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="privacy-content">
+                        <p>
+                            Cookie (далее – куки) являются текстовым файлом, сохраненным в браузере компьютера
+                            (мобильного устройства) пользователя официального интернет-сайта (далее – сайт) при его
+                            посещении пользователем для отражения совершенных им действий. Этот файл позволяет не
+                            вводить заново или выбирать те же параметры при повторном посещении сайта, например, выбор
+                            языковой версии.
+                            Целью обработки куки является обеспечение удобства пользователей сайта и повышение качества
+                            его функционирования.
+                            Мы не передаем куки третьим лицам и не используем их для идентификации субъектов
+                            персональных данных.
+                        </p>
+                        <span class="section-title">На сайте обрабатываются следующие типы куки:</span>
+                        <ul class="nested-list">
+                            <li>
+                                <strong>Функциональные</strong> – позволяют обеспечить индивидуальный опыт использования
+                                сайта и устанавливаются в ответ на действия субъекта персональных данных. Корректная
+                                работа сайта возможна только в случае использования функциональных куки.
+                            </li>
+                            <li>
+                                <strong>Статистические</strong> – позволяют хранить историю посещений страниц сайта в
+                                целях повышения качества его функционирования, чтобы определить наиболее и наименее
+                                популярные страницы. На сайте используется Яндекс.Метрика согласно СТБ 2105-2012.
+                            </li>
+                        </ul>
+                        <p>
+                            Субъекты персональных данных могут отклонить сбор всех или некоторых куки в настройках
+                            своего браузера. При этом некоторые браузеры позволяют посещать интернет-сайты в режиме
+                            «инкогнито», чтобы ограничить хранимый на компьютере объем информации и автоматически
+                            удалять сессионные куки. Кроме того, субъект персональных данных может удалить ранее
+                            сохраненные куки, выбрав соответствующую опцию в истории браузера.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Блок: Политика в отношении видеонаблюдения -->
+                <div class="privacy-policy-section">
+                    <div class="privacy-header">
+                        <span class="title">Политика в отношении видеонаблюдения</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="privacy-content">
+                        <div class="content-with-arrow">
+                            <p>>>> Политика в отношении видеонаблюдения</p>
+                            <!-- Замените '#' на реальную ссылку, если она имеется -->
+                            <a href="https://docs.google.com/document/d/1kTcZTRmx2PAa2QIteKcvW3bT_Gyg2T-h/edit?usp=sharing&ouid=100746152870955679883&rtpof=true&sd=true"
+                                class="arrow-link">Открыть</a>
+                        </div>
+                        <!-- Здесь может быть дополнительный текст -->
+                    </div>
+                </div>
+
+                <!-- Блок: Политика в отношении обработки персональных данных (отдельный) -->
+                <div class="privacy-policy-section">
+                    <div class="privacy-header">
+                        <span class="title">Политика в отношении обработки персональных данных</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="privacy-content">
+                        <p>
+                            <a href="https://drive.google.com/file/d/1FHay1ZzoDOpyr_wN7qx6Ta5O5qYqoPbl/view"
+                                class="application-link">Политика в отношении обработки персональных данных
+                                в ДДиМ «Золак» г.Минска от 11.10.2021.</a>
+                        </p>
+                        <a href="https://drive.google.com/file/d/19tkrTiU1oeobEPiEdAgo-n_DIuRzwb5q/view?usp=sharing"
+                            class="application-link">Приложение 1 к Политике оператора в отношении персональных
+                            данных</a>
+                        <a href="https://drive.google.com/file/d/1YdeY72EVqBsbKppYZBrLDMm5fUIJcu4M/view?usp=sharing"
+                            class="application-link">Приложение 2 к Политике оператора в отношении персональных
+                            данных</a>
+                        <!-- Замените '#' на реальные ссылки к файлам -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер (копируется со всех страниц) -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 ДДиМ "Золак". Все права защищены.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="../about.html">Об учреждении</a></li>
+                    <li><a href="../one-window.html" class="active">Одно окно</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                    <li><a href="../one-window/privacy_policy.html">Политика конфиденциальности</a></li>
+                </ul>
+            </nav>
+            <div class="social-links-footer">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript для раскрытия/скрытия контента
+        document.addEventListener('DOMContentLoaded', function () {
+            const privacyHeaders = document.querySelectorAll('.privacy-header');
+
+            privacyHeaders.forEach(header => {
+                header.addEventListener('click', function () {
+                    const privacySection = this.closest('.privacy-policy-section');
+                    const content = privacySection.querySelector('.privacy-content');
+                    const toggleIcon = this.querySelector('.toggle-icon');
+
+                    // Переключаем класс 'active' для иконки
+                    this.classList.toggle('active');
+
+                    // Переключаем видимость контента
+                    if (content.classList.contains('show')) {
+                        content.classList.remove('show');
+                        content.style.maxHeight = null; // Сбрасываем, чтобы анимация сработала при закрытии
+                    } else {
+                        content.classList.add('show');
+                        // Устанавливаем max-height равным высоте контента для анимации
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+
+            // Обработка кликов по ссылкам, которые должны открываться отдельно
+            const arrowLinks = document.querySelectorAll('.content-with-arrow .arrow-link');
+            arrowLinks.forEach(link => {
+                if (link.getAttribute('href') === '#') {
+                    link.addEventListener('click', function (event) {
+                        event.preventDefault(); // Предотвращаем стандартное действие, если ссылка не задана
+                        alert('Ссылка на данный документ пока не добавлена. Пожалуйста, обратитесь к администрации.');
+                    });
+                }
+            });
+
+            // Обработка кликов по ссылкам на приложения
+            const applicationLinks = document.querySelectorAll('.privacy-content .application-link');
+            applicationLinks.forEach(link => {
+                if (link.getAttribute('href') === '#') {
+                    link.addEventListener('click', function (event) {
+                        event.preventDefault(); // Предотвращаем стандартное действие, если ссылка не задана
+                        alert('Ссылка на данный документ пока не добавлена. Пожалуйста, обратитесь к администрации.');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

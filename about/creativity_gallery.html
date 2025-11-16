@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея Творчества - ДДиМ "Золак"</title>
+    <link rel="stylesheet" href="../style.css"> <!-- Подключаем общий CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Стили для страницы "Галерея Творчества" */
+        .gallery-section {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .gallery-section h3 {
+            color: var(--primary-color);
+            font-family: var(--heading-font);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            /* Адаптивная сетка */
+            gap: 20px;
+            /* Расстояние между элементами */
+        }
+
+        .gallery-item {
+            position: relative;
+            /* Для позиционирования оверлея */
+            overflow: hidden;
+            /* Обрезаем всё, что выходит за рамки */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            display: block;
+            /* Убирает нижний отступ у изображений */
+            width: 100%;
+            height: 250px;
+            /* Фиксированная высота для изображений */
+            object-fit: cover;
+            /* Масштабирование с сохранением пропорций */
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            /* Легкое увеличение при наведении */
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            /* Полупрозрачный черный фон */
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-family: var(--heading-font);
+            font-size: 1.1rem;
+            font-weight: 600;
+            opacity: 0;
+            /* Скрыт по умолчанию */
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+            /* Показываем при наведении */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Верхняя панель (копируется со всех страниц) -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info-top">
+                <span><i class="fas fa-map-marker-alt"></i> г. Минск, пр-т Партизанский, 146</span>
+                <span><i class="fas fa-phone"></i> +375(17)258-22-04</span>
+                <span><i class="fas fa-envelope"></i> zolak@minskedu.gov.by</span>
+            </div>
+            <div class="social-links-top">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Шапка сайта (копируется со всех страниц) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo-title">
+                <img src="../images/logo.png" alt="Логотип ДПМ Золак" class="site-logo">
+                <div class="site-name">
+                    <h2>ДДиМ "Золак"</h2>
+                    <p>Дворец Детей и Молодежи</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../one-window.html">Одно окно</a></li>
+                    <li><a href="../about.html" class="active">Об учреждении</a></li>
+                    <li><a href="../life.html">Жизнь учреждения</a></li>
+                    <li><a href="../students.html">Обучающимся</a></li>
+                    <li><a href="../parents.html">Родителям</a></li>
+                    <li><a href="../teachers.html">Педагогам</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <!-- Основной контент страницы -->
+    <main>
+        <section class="page-header-section">
+            <div class="container">
+                <h1>Галерея Творчества</h1>
+                <nav class="breadcrumb">
+                    <a href="../index.html">Главная</a> / <a href="#">Галерея</a> / Галерея Творчества
+                </nav>
+            </div>
+        </section>
+
+        <section class="content-section section-padding">
+            <div class="container">
+                <div class="gallery-section">
+                    <h3>Наши работы</h3>
+
+                    <div class="gallery-grid">
+                        <!-- Пример элемента галереи -->
+                        <div class="gallery-item">
+                            <img src="../images/gallery/artwork_1.jpg" alt="Название работы 1">
+                            <div class="gallery-item-overlay">
+                                Познание космоса
+                            </div>
+                        </div>
+
+                        <!-- Пример элемента галереи -->
+                        <div class="gallery-item">
+                            <img src="../images/gallery/artwork_2.jpg" alt="Название работы 2">
+                            <div class="gallery-item-overlay">
+                                Надежда, жизнь...
+                            </div>
+                        </div>
+
+                        <!-- Пример элемента галереи -->
+                        <div class="gallery-item">
+                            <img src="../images/gallery/artwork_3.jpg" alt="Название работы 3">
+                            <div class="gallery-item-overlay">
+                                Победный финиш
+                            </div>
+                        </div>
+
+                        <!-- Пример элемента галереи -->
+                        <div class="gallery-item">
+                            <img src="../images/gallery/artwork_4.jpg" alt="Название работы 4">
+                            <div class="gallery-item-overlay">
+                                Ключница
+                            </div>
+                        </div>
+
+                        <div class="gallery-item">
+                            <img src="../images/gallery/artwork_5.jpg" alt="Название работы 5">
+                            <div class="gallery-item-overlay">
+                                Спасатели МЧС
+                            </div>
+                        </div>
+
+                        <div class="gallery-item">
+                            <img src="../images/gallery/artwork_6.jpg" alt="Название работы 6">
+                            <div class="gallery-item-overlay">
+                                Заяц
+                            </div>
+                        </div>
+
+                        <!-- Добавьте столько элементов, сколько нужно -->
+
+                    </div>
+                    <div class="link-container">
+                        <a href="https://photos.app.goo.gl/TQUSpsya1ofv3sC66" target="_blank" class="portal-link">
+                            Все наши работы
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер (копируется со всех страниц) -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 ДДиМ "Золак". Все права защищены.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="../about.html">Об учреждении</a></li>
+                    <li><a href="../one-window.html">Одно окно</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                    <li><a href="../one-window/privacy_policy.html">Политика конфиденциальности</a></li>
+                </ul>
+            </nav>
+            <div class="social-links-footer">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

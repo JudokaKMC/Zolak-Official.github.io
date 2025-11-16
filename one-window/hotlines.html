@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Службы доверия и горячие линии - ДДиМ "Золак"</title>
+    <link rel="stylesheet" href="../style.css"> <!-- Подключаем общий CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Общие стили для раскрывающихся блоков */
+        .collapsible-block {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+        }
+
+        .collapsible-header {
+            background-color: var(--light-bg);
+            padding: 18px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease;
+        }
+
+        .collapsible-header:hover {
+            background-color: var(--border-color);
+        }
+
+        .collapsible-header .title {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--dark-bg);
+        }
+
+        .collapsible-header .toggle-icon {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .collapsible-header.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .collapsible-content {
+            padding: 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+            background-color: #fff;
+            border-top: none;
+        }
+
+        .collapsible-content.show {
+            max-height: 2000px;
+            /* Увеличено для большого объема контента */
+        }
+
+        /* Стили для таблиц */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .data-table th,
+        .data-table td {
+            border: 1px solid var(--border-color);
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .data-table th {
+            background-color: var(--light-bg);
+            font-family: var(--heading-font);
+            font-weight: 700;
+            color: var(--dark-bg);
+            font-size: 1.1rem;
+        }
+
+        .data-table td {
+            background-color: #fff;
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        .data-table tr:nth-child(even) td {
+            background-color: var(--light-bg);
+        }
+
+        .data-table .phone-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .data-table .phone-link:hover {
+            text-decoration: underline;
+        }
+
+        .data-table .time-info {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Стили для списков */
+        .vertical-list ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .vertical-list li {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .vertical-list li:hover {
+            box-shadow: var(--shadow-light);
+        }
+
+        .vertical-list .item-details {
+            flex-grow: 1;
+        }
+
+        .vertical-list .item-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--dark-bg);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .vertical-list .item-phone {
+            font-size: 0.95rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            display: block;
+        }
+
+        .vertical-list .item-time {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .vertical-list .extra-info {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            margin-top: 8px;
+            display: block;
+        }
+
+        .vertical-list .phone-link-small {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .vertical-list .phone-link-small:hover {
+            text-decoration: underline;
+        }
+
+        /* Дополнительные стили для заголовков разделов */
+        .content-section .section-header h2 {
+            margin-bottom: 30px;
+        }
+
+        .collapsible-content .section-title {
+            font-weight: 600;
+            color: var(--dark-bg);
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            display: block;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Верхняя панель (копируется со всех страниц) -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info-top">
+                <span><i class="fas fa-map-marker-alt"></i> г. Минск, пр-т Партизанский, 146</span>
+                <span><i class="fas fa-phone"></i> +375(17)258-22-04</span>
+                <span><i class="fas fa-envelope"></i> zolak@minskedu.gov.by</span>
+            </div>
+            <div class="social-links-top">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Шапка сайта (копируется со всех страниц) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo-title">
+                <img src="../images/logo.png" alt="Логотип ДПМ Золак" class="site-logo">
+                <div class="site-name">
+                    <h2>ДДиМ "Золак"</h2>
+                    <p>Дворец Детей и Молодежи</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../one-window.html" class="active">Одно окно</a></li>
+                    <li><a href="../about.html">Об учреждении</a></li>
+                    <li><a href="../life.html">Жизнь учреждения</a></li>
+                    <li><a href="../students.html">Обучающимся</a></li>
+                    <li><a href="../parents.html">Родителям</a></li>
+                    <li><a href="../teachers.html">Педагогам</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <!-- Основной контент страницы -->
+    <main>
+        <section class="page-header-section">
+            <div class="container">
+                <h1>Службы доверия и горячие линии</h1>
+                <nav class="breadcrumb">
+                    <a href="../index.html">Главная</a> / <a href="../one-window.html">Одно окно</a> / Службы доверия и
+                    горячие линии
+                </nav>
+            </div>
+        </section>
+
+        <section class="content-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Телефоны "горячих линий"</h2>
+                </div>
+
+                <!-- Горячая линия 1: Управление по образованию администрации Заводского района -->
+                <div class="collapsible-block">
+                    <div class="collapsible-header">
+                        <span class="title">Управление по образованию администрации Заводского района г. Минска</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="content-item">
+                            <span class="content-label">"Телефонная горячая линия"</span>
+                            <span class="content-value">
+                                <a href="tel:+375172752000" class="phone-link">+375 (17) 275-20-00</a>
+                            </span>
+                        </div>
+                        <div class="content-item">
+                            <span class="content-label">Режим работы</span>
+                            <span class="content-value">
+                                Понедельник - четверг с 8.45 до 18.00,<br>
+                                Пятница с 8.45 до 16.45<br>
+                                (кроме выходных и праздничных дней),<br>
+                                обед с 13.00 до 14.00
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Горячая линия 2: Комитет по образованию Мингорисполкома -->
+                <div class="collapsible-block">
+                    <div class="collapsible-header">
+                        <span class="title">Горячая линия комитета по образованию Мингорисполкома</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="content-item">
+                            <span class="content-label">Телефон</span>
+                            <span class="content-value">
+                                <a href="tel:+375173803152" class="phone-link">+375 (17) 380-31-52</a>
+                            </span>
+                        </div>
+                        <div class="content-item">
+                            <span class="content-label">Режим работы</span>
+                            <span class="content-value">
+                                Понедельник – четверг: 08.45 – 18.00, обеденный перерыв: 13.00 – 14.00.<br>
+                                Пятница: 08.45 – 16.45, обеденный перерыв: 13.00 – 14.00.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Горячая линия 3: Министерство образования -->
+                <div class="collapsible-block">
+                    <div class="collapsible-header">
+                        <span class="title">"ГОРЯЧАЯ ЛИНИЯ" Министерства образования</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="content-item">
+                            <span class="content-label">Телефон</span>
+                            <span class="content-value">
+                                <a href="tel:+375172224312" class="phone-link">+375 (17) 222-43-12</a>
+                            </span>
+                        </div>
+                        <div class="content-item">
+                            <span class="content-label">Прием звонков</span>
+                            <span class="content-value">
+                                (см. <a href="#" class="phone-link">график проведения "горячих линий"</a>)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Служба экстренной психологической помощи "Телефон Доверия" -->
+                <div class="collapsible-block">
+                    <div class="collapsible-header">
+                        <span class="title">Служба экстренной круглосуточной психологической помощи "Телефон
+                            Доверия"</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="content-item">
+                            <span class="content-label">Для детей и подростков</span>
+                            <span class="content-value">
+                                <a href="tel:+375172630303" class="phone-link">+375(17)263-03-03</a> (круглосуточно)
+                            </span>
+                        </div>
+                        <div class="content-item">
+                            <span class="content-label">Для взрослых</span>
+                            <span class="content-value">
+                                <a href="tel:+375173524444" class="phone-link">+375(17)352-44-44</a> (круглосуточно)<br>
+                                <a href="tel:+375173044370" class="phone-link">+375(17)304 43 70</a> (круглосуточно)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Раздел: "Телефоны доверия" в Беларуси -->
+                <div class="section-header">
+                    <h2>"Телефоны доверия" в Беларуси</h2>
+                </div>
+
+                <div class="collapsible-block">
+                    <div class="collapsible-header">
+                        <span class="title">Телефоны доверия по регионам</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="content-item">
+                            <span class="content-label">Минск:</span>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Категория</th>
+                                        <th>Код</th>
+                                        <th>Телефон</th>
+                                        <th>Время работы</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>для взрослых</td>
+                                        <td>8017</td>
+                                        <td><a href="tel:+375173524444" class="phone-link">3524444</a></td>
+                                        <td>круглосуточно</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>8017</td>
+                                        <td><a href="tel:+375173044370" class="phone-link">3044370</a></td>
+                                        <td>круглосуточно</td>
+                                    </tr>
+                                    <tr>
+                                        <td>для детей и подростков</td>
+                                        <td>8017</td>
+                                        <td><a href="tel:+375172630303" class="phone-link">2630303</a></td>
+                                        <td>круглосуточно</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="content-item">
+                            <span class="content-label">Минский областной клинический центр "Психиатрия -
+                                наркология"</span>
+                            <table class="data-table">
+                                <tbody>
+                                    <tr>
+                                        <td>круглосуточная служба экстренной психологической помощи "Телефон доверия"
+                                        </td>
+                                        <td>8017</td>
+                                        <td><a href="tel:+375172020401" class="phone-link">2020401</a></td>
+                                        <td>круглосуточно</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="content-item">
+                            <span class="content-label">Минская область:</span>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Населенный пункт</th>
+                                        <th>Код</th>
+                                        <th>Телефон</th>
+                                        <th>Время работы</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Борисов</td>
+                                        <td>801777</td>
+                                        <td>926285</td>
+                                        <td>15.00-17.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Вилейка</td>
+                                        <td>801771</td>
+                                        <td>51498</td>
+                                        <td>8.00-16.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Молодечно</td>
+                                        <td>801773</td>
+                                        <td>54644</td>
+                                        <td>20.00-8.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Слуцк</td>
+                                        <td>801795</td>
+                                        <td>55333</td>
+                                        <td>8.00-18.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Солигорск</td>
+                                        <td>80174</td>
+                                        <td>221122</td>
+                                        <td>9.00-16.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Жодино</td>
+                                        <td>801775</td>
+                                        <td>35102</td>
+                                        <td>13.00-15.00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Брестская область -->
+                        <div class="content-item">
+                            <span class="content-label">Брестская область:</span>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Населенный пункт</th>
+                                        <th>Телефон</th>
+                                        <th>Время работы</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Брест</td>
+                                        <td><a href="tel:+375162406226" class="phone-link">406226</a></td>
+                                        <td>круглосуточно</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><a href="tel:+375162201555" class="phone-link">201555</a></td>
+                                        <td>круглосуточно</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Барановичи</td>
+                                        <td><a href="tel:+375163416080" class="phone-link">416080</a></td>
+                                        <td>9.00-17.00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Витебская область -->
+                        <div class="content-item">
+                            <span class="content-label">Витебская область:</span>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Населенный пункт</th>
+                                        <th>Телефон</th>
+                                        <th>Время работы</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Новополоцк</td>
+                                        <td>80214 532575</td>
+                                        <td>8.00-20.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Полоцк</td>
+                                        <td>80214 432220</td>
+                                        <td>8.00-20.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Орша</td>
+                                        <td>80216 210019</td>
+                                        <td>8.00-20.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Витебск</td>
+                                        <td>80212 616060</td>
+                                        <td>круглосуточно</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Гомельская область -->
+                        <div class="content-item">
+                            <span class="content-label">Гомельская область:</span>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Населенный пункт</th>
+                                        <th>Телефон</th>
+                                        <th>Время работы</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Гомель</td>
+                                        <td>80232 315161</td>
+                                        <td>8.00-24.00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Гродненская область -->
+                        <div class="content-item">
+                            <span class="content-label">Гродненская область:</span>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Населенный пункт</th>
+                                        <th>Телефон</th>
+                                        <th>Время работы</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Гродно</td>
+                                        <td>80152 170</td>
+                                        <td>8.00–24.00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Могилевская область -->
+                        <div class="content-item">
+                            <span class="content-label">Могилевская область:</span>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Населенный пункт</th>
+                                        <th>Телефон</th>
+                                        <th>Время работы</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Могилев</td>
+                                        <td>80222 473161</td>
+                                        <td>круглосуточно</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>80222 222681</td>
+                                        <td>8.00-20.00 (будни)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Бобруйск</td>
+                                        <td>80225 434024</td>
+                                        <td>круглосуточно</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Раздел: "Телефоны справочных служб" -->
+                <div class="section-header">
+                    <h2>Телефоны справочных служб</h2>
+                </div>
+
+                <div class="collapsible-block">
+                    <div class="collapsible-header">
+                        <span class="title">Телефоны справочных служб</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="vertical-list">
+                            <ul>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Дежурная служба МЧС</span>
+                                        <span class="item-phone">101</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Милиция</span>
+                                        <span class="item-phone">102</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Скорая медицинская помощь</span>
+                                        <span class="item-phone">103</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Аварийная служба газа</span>
+                                        <span class="item-phone">104</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Справочная автовокзалов</span>
+                                        <span class="item-phone">114</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Справочная железной дороги</span>
+                                        <span class="item-phone"><a href="tel:+375172257000"
+                                                class="phone-link-small">225-70-00</a></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Авиакассы</span>
+                                        <span class="item-phone">106</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Городская телефонная сеть</span>
+                                        <span class="item-phone">109</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Предварительный заказ ж/д билетов</span>
+                                        <span class="item-phone">151</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Справочная кодов АМТС</span>
+                                        <span class="item-phone">153</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Справочно-информационная служба «Контакт-центр»
+                                            Мингорисполкома, Online консультация</span>
+                                        <span class="item-phone">142</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Диспетчер Мингорисполкома (прием информации о возникших
+                                            неисправностях и аварийных ситуациях на всех инженерных коммуникациях
+                                            города)</span>
+                                        <span class="item-phone">165</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Прием телеграмм по телефону</span>
+                                        <span class="item-phone">166</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Справочная бытовых услуг</span>
+                                        <span class="item-phone">167</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Справочная аптек</span>
+                                        <span class="item-phone">169</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Заказ междугородных телефонных разговоров</span>
+                                        <span class="item-phone">171</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Заказ международных телефонных разговоров</span>
+                                        <span class="item-phone">180</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Инфолиния</span>
+                                        <span class="item-phone">185</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Автоответчик времени</span>
+                                        <span class="item-phone">188</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Автоответчик погоды</span>
+                                        <span class="item-phone">195</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Дежурный ГАИ</span>
+                                        <span class="item-phone"><a href="tel:+375172221717"
+                                                class="phone-link-small">222-17-17</a></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Телефон доверия</span>
+                                        <span class="item-phone"><a href="tel:+375172904444"
+                                                class="phone-link-small">290-44-44</a></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-details">
+                                        <span class="item-title">Вызов такси</span>
+                                        <span class="item-phone"></span> <!-- Нет номера, так что пусто -->
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер (копируется со всех страниц) -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 ДДиМ "Золак". Все права защищены.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="../about.html">Об учреждении</a></li>
+                    <li><a href="../one-window.html" class="active">Одно окно</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                    <li><a href="../one-window/privacy_policy.html">Политика конфиденциальности</a></li>
+                </ul>
+            </nav>
+            <div class="social-links-footer">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript для раскрытия/скрытия контента
+        document.addEventListener('DOMContentLoaded', function () {
+            const collapsibleHeaders = document.querySelectorAll('.collapsible-header');
+
+            collapsibleHeaders.forEach(header => {
+                header.addEventListener('click', function () {
+                    const collapsibleBlock = this.closest('.collapsible-block');
+                    const content = collapsibleBlock.querySelector('.collapsible-content');
+                    const toggleIcon = this.querySelector('.toggle-icon');
+
+                    // Переключаем класс 'active' для иконки
+                    this.classList.toggle('active');
+
+                    // Переключаем видимость контента
+                    if (content.classList.contains('show')) {
+                        content.classList.remove('show');
+                        content.style.maxHeight = null; // Сбрасываем, чтобы анимация сработала при закрытии
+                    } else {
+                        content.classList.add('show');
+                        // Устанавливаем max-height равным высоте контента для анимации
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

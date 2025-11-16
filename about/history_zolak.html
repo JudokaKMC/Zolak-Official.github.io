@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Из истории Золака - ДДиМ "Золак"</title>
+    <link rel="stylesheet" href="../style.css"> <!-- Подключаем общий CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Стили для страницы "Из истории Золака" */
+        .history-section {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .history-section h3 {
+            color: var(--primary-color);
+            font-family: var(--heading-font);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 25px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .history-main-image {
+            width: 100%;
+            max-width: 700px;
+            /* Ограничиваем максимальную ширину изображения */
+            height: auto;
+            display: block;
+            /* Убираем лишний пробел под изображением */
+            margin: 0 auto 35px auto;
+            /* Центрируем и добавляем отступ снизу */
+            border-radius: 8px;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid var(--border-color-light);
+        }
+
+        .history-text {
+            font-size: 1.05rem;
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .history-text p {
+            margin-bottom: 18px;
+            /* Отступ между абзацами */
+            text-indent: 25px;
+            /* Красная строка */
+        }
+
+        .history-text p:first-of-type {
+            text-indent: 0;
+            /* Убираем отступ для первого абзаца, если нужно, или оставляем */
+        }
+
+        .history-text p strong {
+            color: var(--dark-bg);
+            font-weight: 700;
+        }
+
+        /* Медиазапросы для адаптивности */
+        @media (max-width: 768px) {
+            .history-section {
+                padding: 20px;
+            }
+
+            .history-section h3 {
+                font-size: 1.6rem;
+                margin-bottom: 20px;
+            }
+
+            .history-main-image {
+                margin-bottom: 25px;
+            }
+
+            .history-text {
+                font-size: 1rem;
+            }
+
+            .history-text p {
+                text-indent: 15px;
+                /* Уменьшаем красную строку на мобильных */
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Верхняя панель (копируется со всех страниц) -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info-top">
+                <span><i class="fas fa-map-marker-alt"></i> г. Минск, пр-т Партизанский, 146</span>
+                <span><i class="fas fa-phone"></i> +375(17)258-22-04</span>
+                <span><i class="fas fa-envelope"></i> zolak@minskedu.gov.by</span>
+            </div>
+            <div class="social-links-top">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Шапка сайта (копируется со всех страниц) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo-title">
+                <img src="../images/logo.png" alt="Логотип ДПМ Золак" class="site-logo">
+                <div class="site-name">
+                    <h2>ДДиМ "Золак"</h2>
+                    <p>Дворец Детей и Молодежи</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../one-window.html">Одно окно</a></li>
+                    <li><a href="../about.html" class="active">Об учреждении</a></li>
+                    <li><a href="../life.html">Жизнь учреждения</a></li>
+                    <li><a href="../students.html">Обучающимся</a></li>
+                    <li><a href="../parents.html">Родителям</a></li>
+                    <li><a href="../teachers.html">Педагогам</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <!-- Основной контент страницы -->
+    <main>
+        <section class="page-header-section">
+            <div class="container">
+                <h1>Из истории "Золака"</h1>
+                <nav class="breadcrumb">
+                    <a href="../index.html">Главная</a> / <a href="../about.html">Об учреждении</a> / Из истории
+                    "Золака"
+                </nav>
+            </div>
+        </section>
+
+        <section class="content-section section-padding">
+            <div class="container">
+                <div class="history-section">
+                    <h3>История Дворца детей и молодежи "Золак"</h3>
+
+                    <img src="../images/history/zolak_old.jpg" alt="Старое фото здания ДПМ Золак"
+                        class="history-main-image">
+
+                    <div class="history-text">
+                        <p>Государственное учреждение образования «Дворец детей и молодежи «Золак» г.Минска» создано
+                            решением Минского городского исполнительного комитета в <strong>1975 году</strong> (Дом
+                            пионеров и школьников Заводского района г. Минска). Основным направлением методической
+                            работы было оказание помощи школам Заводского района г. Минска, пионерским дружинам,
+                            классным руководителям. К <strong>1988 году</strong> в Доме пионеров занималось уже около
+                            1000 ребят. Также был создан научно-методический отдел.</p>
+                        <p><strong>29 декабря 1990 года</strong> Дом пионеров и школьников был переименован в Комплекс
+                            внешкольной работы «Золак» в связи с присоединением комнат по месту жительства. Это была
+                            новая экспериментальная площадка в Заводском районе. Из досуговых заведений и стандартных
+                            комнат отдыха филиалы превращались в более масштабные, профессиональные центры — Комплексы
+                            внешкольной работы. Потом такие центры стали возникать по всей республике.</p>
+                        <p>В <strong>1993 году</strong> возник новый отдел «Юниорагенство» — первая в республике
+                            подростковая биржа занятости, целью которой стала адаптация подростков в
+                            социально-экономических условиях, оказание помощи в самореализации личности и формирование
+                            ее правовой культуры.</p>
+                        <p>В это же время впервые зарождается идея проекта «Педагог года» — конкурс профессионального
+                            мастерства. Чуть позже этот проект вышел на городской уровень. И то, что сейчас в столице
+                            есть конкурс «Учитель года» — это определенная заслуга «Золака».</p>
+                        <p><strong>1994 год</strong> — создание школы «Майстэрня».</p>
+                        <p><strong>1995 год</strong> — «Золак» получает новую прописку в здании Дворца культуры» по
+                            адресу Партизанский проспект, 146.</p>
+                        <p><strong>1996 год</strong> — в учреждении создана социально-психологическая служба и
+                            разработанная Концепция «Формирование и развитие системы социально-педагогической
+                            деятельности с детьми и подростками в КВР «Золак» Заводского района г.Минска».</p>
+                        <p><strong>1996 год</strong> — создано общественное объединение Детско-юношеской ассоциации
+                            Заводского района, целью которого являлась координация  деятельности общественных
+                            организаций и содействие развитию детского движения Заводского района.</p>
+                        <p><strong>1996 год</strong> — впервые звание «народный коллектив» присвоено
+                            вокально-инструментальному ансамблю «Юность» (руководитель Прихач В.Н.).</p>
+                        <p><strong>1997 год</strong> — открытие филиала по улице Плеханова, 1.</p>
+                        <p><strong>1998 год</strong> — Комплекс внешкольной работы «Золак» переименование во Дворец
+                            внешкольной работы «Золак».</p>
+                        <p><strong>1998 год</strong> — звание «народный коллектив» присвоено кружку «Соломоплетение и
+                            ткачество» (руководитель Козлов З.В.).</p>
+                        <p><strong>2001 год</strong> — звание  «народный коллектив» присвоено кружку «Художественная
+                            вышивка» (руководитель Розум Ж.Е.).</p>
+                        <p><strong>2001 год</strong> — звание «народный самодеятельный коллектив» присвоено
+                            декоративно-прикладной школе «Майстэрня» (руководитель Никифорович М.В., Бекеева М.В.,
+                            Ковальчук Т.Н., Угренникова А.Х., Абакумова М.В.).</p>
+                        <p><strong>2002 год</strong> — звание «образцовый» присвоено оркестру народных инструментов
+                            «Карагод» (руководитель Расолько Н.И.).</p>
+                        <p><strong>2004 год</strong> — звание «народный коллектив» присвоено «Изостудии «Сонейка»
+                            (руководитель Пономаренко Е.П.).</p>
+                        <p><strong>2005 год</strong> — звание «образцовый» присвоено театру танца «Ирис-шоу»
+                            (руководитель Крагельская Н.К.) и вокальному ансамблю «Песенка».</p>
+                        <p><strong>2011 год</strong> —  в результате принятия Кодекса Республики Беларусь об образовании
+                            внешкольные учреждения перешли в новый статус, и дворец был переименован в государственное
+                            учреждение образования «Дворец детей и молодежи «Золак» г.Минска» (ДДиМ «Золак» г.Минска).
+                        </p>
+                        <p><strong>2011 год</strong> — конкурс профессионального мастерства педагогических работников
+                            учреждений внешкольного воспитания и обучения г.Минска впервые проводится по основным
+                            направлениям деятельности.</p>
+                        <p><strong>2011 год</strong> — на базе ДДиМ «Золак» г.Минска организован Координационный совет
+                            содействия развитию детских и молодежных общественных организаций и объединений Заводского
+                            района г.Минска, который определяет приоритетные направления деятельности по гражданскому и
+                            патриотическому воспитанию детей и подростков в Заводском районе.</p>
+                        <p><strong>2015 году</strong> — ДДиМ «Золак» г. Минска занесен на доску Почёта Заводского района
+                            г.Минска за обеспечение высоких показателей социально-экономического развития и в городском
+                            конкурсе «Лучшее учреждение дополнительного образования детей и молодёжи столицы – 2015»
+                            занял II место.</p>
+                        <p><strong>2018 году</strong> — ДДиМ «Золак» г.Минска награжден знаком «Лучшее учреждение
+                            дополнительного образования – 2018» в Заводском районе г. Минска.</p>
+                        <p><strong>2019 году</strong> — одписано соглашение о сотрудничестве с Муниципальным бюджетным
+                            учреждением дополнительного образования города Новосибирска «Центр внешкольной работы
+                            «Галактика».</p>
+                        <p><strong>2020 году</strong> — после ремонта распахнул свои двери обновленный концертный зал
+                            ДДиМ «Золак» г. Минска.</p>
+                        <p><strong>2021 году</strong> — подписано соглашение о сотрудничестве с Государственным
+                            бюджетным нетиповым образовательным учреждением «Академия цифровых технологий»
+                            Санкт-Петербурга.</p>
+                        <p><strong>2022 году</strong> — ДДиМ «Золак» г. Минска занесен на доску Почёта Заводского района
+                            г.Минска.</p>
+                        <p><strong>2022 году</strong> — подписано соглашение о сотрудничестве с Государственным
+                            бюджетным учреждением дополнительного образования Детско-юношеский творческий центр
+                            «Васильевский остров» Санкт-Петербурга.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер (копируется со всех страниц) -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 ДДиМ "Золак". Все права защищены.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="../about.html" class="active">Об учреждении</a></li>
+                    <li><a href="../one-window.html">Одно окно</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                    <li><a href="../one-window/privacy_policy.html">Политика конфиденциальности</a></li>
+                </ul>
+            </nav>
+            <div class="social-links-footer">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипт для мобильного меню (если есть) -->
+    <!-- <script src="../script.js"></script> -->
+</body>
+
+</html>

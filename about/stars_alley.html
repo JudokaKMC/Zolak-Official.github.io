@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аллея Звёзд - ДДиМ "Золак"</title>
+    <link rel="stylesheet" href="../style.css"> <!-- Подключаем общий CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Стили для страницы "Аллея Звёзд" */
+        .stars-alley-section {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .stars-alley-section h3 {
+            color: var(--primary-color);
+            font-family: var(--heading-font);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        /* Стили для блока переключения отделов */
+        .department-toggle-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .department-toggle-button {
+            background-color: var(--primary-color-lighter);
+            color: var(--primary-color);
+            font-family: var(--heading-font);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            margin: 0 5px;
+            /* Небольшой отступ между кнопками */
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+            border: 1px dashed var(--primary-color);
+            display: inline-block;
+        }
+
+        .department-toggle-button:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .department-toggle-button.active {
+            background-color: var(--primary-color);
+            color: #fff;
+            transform: translateY(0);
+            /* Без подъема для активной */
+            border-style: solid;
+            /* Делаем рамку сплошной для активной */
+        }
+
+        /* Стили для секций отделов */
+        .department-section {
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color-light);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: var(--shadow-light);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .department-section.hidden {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+            /* Нельзя кликнуть по скрытому элементу */
+            height: 0;
+            padding: 0;
+            margin-bottom: 0;
+            overflow: hidden;
+        }
+
+        .department-section h4 {
+            font-family: var(--heading-font);
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--primary-color-light);
+            padding-bottom: 10px;
+        }
+
+        /* Стили для карточек звезд */
+        .star-card {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--border-color-light);
+        }
+
+        .star-card:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .star-image {
+            flex-shrink: 0;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 20px;
+            border: 1px solid var(--border-color-light);
+            box-shadow: var(--shadow-small);
+        }
+
+        .star-info {
+            flex-grow: 1;
+        }
+
+        .star-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark-bg);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .star-details {
+            font-size: 1.05rem;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .star-details p {
+            margin-bottom: 8px;
+        }
+
+        .star-details p:last-child {
+            margin-bottom: 0;
+        }
+
+        .star-details ul {
+            list-style-type: disc;
+            padding-left: 25px;
+            margin-top: 8px;
+        }
+
+        .star-details li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Верхняя панель (копируется со всех страниц) -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info-top">
+                <span><i class="fas fa-map-marker-alt"></i> г. Минск, пр-т Партизанский, 146</span>
+                <span><i class="fas fa-phone"></i> +375(17)258-22-04</span>
+                <span><i class="fas fa-envelope"></i> zolak@minskedu.gov.by</span>
+            </div>
+            <div class="social-links-top">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Шапка сайта (копируется со всех страниц) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo-title">
+                <img src="../images/logo.png" alt="Логотип ДПМ Золак" class="site-logo">
+                <div class="site-name">
+                    <h2>ДПМ "Золак"</h2>
+                    <p>Дворец Детей и Молодежи</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../one-window.html">Одно окно</a></li>
+                    <li><a href="../about.html" class="active">Об учреждении</a></li>
+                    <li><a href="../life.html">Жизнь учреждения</a></li>
+                    <li><a href="../students.html">Обучающимся</a></li>
+                    <li><a href="../parents.html">Родителям</a></li>
+                    <li><a href="../teachers.html">Педагогам</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <!-- Основной контент страницы -->
+    <main>
+        <section class="page-header-section">
+            <div class="container">
+                <h1>Аллея Звёзд</h1>
+                <nav class="breadcrumb">
+                    <a href="../index.html">Главная</a> / <a href="../about.html">Об учреждении</a> / Аллея Звёзд
+                </nav>
+            </div>
+        </section>
+
+        <section class="content-section section-padding">
+            <div class="container">
+                <div class="stars-alley-section">
+                    <h3>Аллея Звёзд</h3>
+
+                    <!-- Кнопки для переключения отделов -->
+                    <div class="department-toggle-container">
+                        <button class="department-toggle-button active" data-target="section-sports">
+                            Отдел физкультурно-оздоровительной деятельности
+                        </button>
+                        <button class="department-toggle-button" data-target="section-arts">
+                            Отдел художественного творчества
+                        </button>
+                    </div>
+
+                    <!-- Отдел физкультурно-оздоровительной деятельности -->
+                    <div id="section-sports" class="department-section">
+                        <h4>Отдел физкультурно-оздоровительной деятельности</h4>
+
+                        <!-- Мороз Владислав -->
+                        <div class="star-card">
+                            <img src="../images/stars/moroz_vladislav.jpg" alt="Фото Мороза Владислава"
+                                class="star-image">
+                            <div class="star-info">
+                                <h5 class="star-name">Мороз Владислав</h5>
+                                <div class="star-details">
+                                    <p><strong>Объединение:</strong> «Брейк-данс»</p>
+                                    <p><strong>Педагог:</strong> Янушкевич Владимир Александрович</p>
+                                    <p><strong>Достижения:</strong></p>
+                                    <ul>
+                                        <li>Многократный победитель соревнований и батлов по брейк-дансу.</li>
+                                        <li>Дипломат 1 степени XI открытого чемпионата РБ по брейкингу-2022 «SOLO KIDS &
+                                            PROBATTLE» I «CREWSNOW & BATTLE».</li>
+                                        <li>Дипломат 2 степени «CIRCLE OF TRUST 2022».</li>
+                                        <li>Дипломат 1 степени международного фестиваля по брейкингу BREAKING
+                                            INTERNATIONAL «AXISPOWER».</li>
+                                        <li>Дипломат 2 степени Чемпионата по брейкингу «MINSK CUP-2022 г.Минск.</li>
+                                        <li>Дипломат 3 степени в отборочном этапе на чемпионат страны.</li>
+                                        <li>Дипломат 1 степени в открытых соревнованиях по брейк-дансу «NBC-2023».</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Пигалов Егор -->
+                        <div class="star-card">
+                            <img src="../images/stars/pigalov_egor.jpg" alt="Фото Пигалова Егора" class="star-image">
+                            <div class="star-info">
+                                <h5 class="star-name">Пигалов Егор</h5>
+                                <div class="star-details">
+                                    <p><strong>Объединение:</strong> «Брейк-данс»</p>
+                                    <p><strong>Педагог:</strong> Янушкевич Владимир Александрович</p>
+                                    <p><strong>Достижения:</strong></p>
+                                    <ul>
+                                        <li>Многократный победитель соревнований и батлов по брейк-дансу.</li>
+                                        <li>Дипломат 1 степени «Чемпионата РБ по брейкингу «ADEPT-2022».</li>
+                                        <li>Дипломат 2 степени «Отборочного этапа на чемпионат страны-2022».</li>
+                                        <li>Дипломат 1 степени «Открытых соревнований по брейк-дансу «NBC-2023».</li>
+                                        <li>Дипломат 2 степени «Открытых соревнований по брейк-дансу «BREAKKINGZ».</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Хлебко Александра -->
+                        <div class="star-card">
+                            <img src="../images/stars/khlebko_aleksandra.jpg" alt="Фото Хлебко Александры"
+                                class="star-image">
+                            <div class="star-info">
+                                <h5 class="star-name">Хлебко Александра</h5>
+                                <div class="star-details">
+                                    <p><strong>Объединение:</strong> «Каратэ-до шотокан»</p>
+                                    <p><strong>Педагоги:</strong> Новашиская Ю.А. и Жданович А.И.</p>
+                                    <p><strong>Достижения:</strong></p>
+                                    <ul>
+                                        <li>Имеет второй спортивный разряд по каратэ.</li>
+                                        <li>Дипломат 3 степени «Открытого первенства и чемпионата РБ по каратэ-2022».
+                                        </li>
+                                        <li>Дипломат 3 степени «Республиканских соревнований «Приз открытия сезона по
+                                            шотокан каратэ-до-2022».</li>
+                                        <li>Дипломат 3 степени «Международных соревнований по каратэ «Кубок
+                                            дружбы-2023».</li>
+                                        <li>Дипломат 1 и 2 степени «IX Республиканских соревнованиях по шотокан
+                                            каратэ-до «Белыя росы-2023».</li>
+                                        <li>Дипломат 3 степени «Открытого республиканского турнира по карате «Everest
+                                            Cup: олимпийские надежды-2023».</li>
+                                        <li>Трехкратный дипломат 1 степени открытых республиканских соревнований по
+                                            карате-до шотокан «Край Смолевичский-2023».</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Лукашук Андрей -->
+                        <div class="star-card">
+                            <img src="../images/stars/lukashuk_andrey.jpg" alt="Фото Лукашука Андрея"
+                                class="star-image">
+                            <div class="star-info">
+                                <h5 class="star-name">Лукашук Андрей</h5>
+                                <div class="star-details">
+                                    <p><strong>Объединение:</strong> «Каратэ-до шотокан»</p>
+                                    <p><strong>Педагоги:</strong> Новашиская Ю.А. и Жданович А.И.</p>
+                                    <p><strong>Достижения:</strong></p>
+                                    <ul>
+                                        <li>Имеет второй спортивный разряд по каратэ.</li>
+                                        <li>Дипломат 3 степени международных соревнований по каратэ «Путь к
+                                            успеху-2022».</li>
+                                        <li>Дипломат 3 степени «Открытого первенства и чемпионата РБ по каратэ-2022».
+                                        </li>
+                                        <li>Дипломат 2 степени «Открытого первенство по каратэ-2023».</li>
+                                        <li>Дипломат 2 степени «Открытых республиканских соревнований по карате-до
+                                            шотокан «Край Смолевичский-2023».</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Отдел художественного творчества -->
+                    <div id="section-arts" class="department-section hidden">
+                        <h4>Отдел художественного творчества</h4>
+
+                        <!-- Лавринович Ксения -->
+                        <div class="star-card">
+                            <img src="../images/stars/lavrinovich_ksenia.jpg" alt="Фото Лавринович Ксении"
+                                class="star-image">
+                            <div class="star-info">
+                                <h5 class="star-name">Лавринович Ксения</h5>
+                                <div class="star-details">
+                                    <p><strong>Солистка ОПИ:</strong> «Образцовый ансамбль народной песни «Святкі»</p>
+                                    <p><strong>Педагог:</strong> Булицкая Наталья Николаевна</p>
+                                    <p><strong>Аккомпаниатор:</strong> Казанович Виталий Петрович</p>
+                                    <p><strong>Достижения:</strong></p>
+                                    <ul>
+                                        <li>Дипломант 1 степени VII Открытого международного фестиваля-конкурса
+                                            «Творчество Без Границ».</li>
+                                        <li>Участница юбилейного концерта образцового ансамбля народной песни «Святкі»
+                                            «Галасы нашых сэрцаў».</li>
+                                        <li>Участница заключительного гала-концерта фестиваля народного творчества
+                                            «Сузор’е».</li>
+                                        <li>Участница творческих проектов ДДиМ «Золак» г.Минска.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Старший концертный состав ОПИ «Образцовый ансамбль народной песни «Святкі» -->
+                        <div class="star-card">
+                            <img src="../images/stars/svyatki_ensemble.jpg" alt="Фото ансамбля Святкі"
+                                class="star-image">
+                            <div class="star-info">
+                                <h5 class="star-name">Старший концертный состав ОПИ «Образцовый ансамбль народной песни
+                                    «Святкі»</h5>
+                                <div class="star-details">
+                                    <p><strong>Педагог:</strong> Рудковская Марина Иосифовна</p>
+                                    <p><strong>Аккомпаниатор:</strong> Филипович Ян Александрович</p>
+                                    <p><strong>Достижения:</strong></p>
+                                    <ul>
+                                        <li>Лауреат 1 степени IX Республиканского фестиваля-конкурса детского искусства
+                                            «Лидский венок».</li>
+                                        <li>Участники юбилейного концерта образцового ансамбля народной песни «Святкі»
+                                            «Галасы нашых сэрцаў».</li>
+                                        <li>Участники заключительного гала-концерта фестиваля народного творчества
+                                            «Сузор’е».</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Брижевская Екатерина -->
+                        <div class="star-card">
+                            <img src="../images/stars/brizhevskaya_ekaterina.jpg" alt="Фото Брижевской Екатерины"
+                                class="star-image">
+                            <div class="star-info">
+                                <h5 class="star-name">Брижевская Екатерина</h5>
+                                <div class="star-details">
+                                    <p><strong>Солистка ОПИ:</strong> «Образцовый эстрадно-вокальный коллектив «Голос»
+                                    </p>
+                                    <p><strong>Педагог:</strong> Сапожникова Елизавета Сергеевна</p>
+                                    <p><strong>Достижения:</strong></p>
+                                    <ul>
+                                        <li>Лауреат 1 степени открытого конкурса детского и юношеского творчества «Зоркі
+                                            Маладзечна 2022» (в составе ансамбля).</li>
+                                        <li>Дипломант 1 степени открытого районного конкурса патриотической песни «Песни
+                                            военной шинели» (в составе ансамбля).</li>
+                                        <li>Дипломант 1 степени районного конкура патриотического творчества «Я ПОМНЮ!»
+                                            (в составе ансамбля).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Мохарт Диана -->
+                        <div class="star-card">
+                            <img src="../images/stars/mohart_diana.jpg" alt="Фото Мохарт Дианы" class="star-image">
+                            <div class="star-info">
+                                <h5 class="star-name">Мохарт Диана</h5>
+                                <div class="star-details">
+                                    <p><strong>Участница ОПИ:</strong> «Образцовый театра танца «Ирис-шоу»</p>
+                                    <p><strong>Педагог:</strong> Крагельская Наталья Казимировна</p>
+                                    <p><strong>Достижения:</strong></p>
+                                    <ul>
+                                        <li>Дипломант 2 степени открытого городского конкурса новогодних танцев «Зимняя
+                                            карусель» (в составе коллектива).</li>
+                                        <li>Участник республиканской акции ко Дню Великой Победы советского народа в
+                                            Великой Отечественной войне «30 дней до Победы» (в составе творческой группы
+                                            ДДиМ «Золак» г.Минска).</li>
+                                        <li>Участник творческих проектов ДДиМ «Золак» г.Минска.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Павловский Марат -->
+                        <div class="star-card">
+                            <img src="../images/stars/pavlovskiy_marat.jpg" alt="Фото Павловского Марата"
+                                class="star-image">
+                            <div class="star-info">
+                                <h5 class="star-name">Павловский Марат</h5>
+                                <div class="star-details">
+                                    <p><strong>Участник ОПИ:</strong> «Образцовый театра танца «Ирис-шоу»</p>
+                                    <p><strong>Педагог:</strong> Кудравец Татьяна Николаевна</p>
+                                    <p><strong>Достижения:</strong></p>
+                                    <ul>
+                                        <li>Дипломант 2 степени открытого городского конкурса новогодних танцев «Зимняя
+                                            карусель».</li>
+                                        <li>Участник церемонии закрытия IX Минского молодёжного фестиваля педагогических
+                                            идей и решений (в составе коллектива).</li>
+                                        <li>Участник творческих проектов и программ ДДиМ «Золак» г.Минска.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Шаршун Илья -->
+                        <div class="star-card">
+                            <img src="../images/stars/sharshun_ilya.jpg" alt="Фото Шаршуна Ильи" class="star-image">
+                            <div class="star-info">
+                                <h5 class="star-name">Шаршун Илья</h5>
+                                <div class="star-details">
+                                    <p><strong>Солист ОПИ:</strong> «Образцовый вокальный ансамбль «Песенка»</p>
+                                    <p><strong>Руководитель:</strong> Ковалёва Елена Сергеевна</p>
+                                    <p><strong>Педагог по вокалу:</strong> Мышковец Даниил Александрович</p>
+                                    <p><strong>Достижения:</strong></p>
+                                    <ul>
+                                        <li>Участник телевизионного проекта ФАКТОР.BY.</li>
+                                        <li>Лауреат 1 степени IV Международного многожанрового фестиваля-конкурса
+                                            «Millennium».</li>
+                                        <li>Лауреат 2 степени V Международного телепроекта «КУБОК ДРУЖБЫ».</li>
+                                        <li>Лауреат 3 степени III Международного фестиваля-конкурса «АРТ-парад в
+                                            Витебске.</li>
+                                        <li>Лауреат 3 степени III Республиканского конкурса искусств «ГОЛОСА 2022».</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер (копируется со всех страниц) -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 ДДиМ "Золак". Все права защищены.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="../about.html" class="active">Об учреждении</a></li>
+                    <li><a href="../one-window.html">Одно окно</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                    <li><a href="../one-window/privacy_policy.html">Политика конфиденциальности</a></li>
+                </ul>
+            </nav>
+            <div class="social-links-footer">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleButtons = document.querySelectorAll('.department-toggle-button');
+            const departmentSections = document.querySelectorAll('.department-section');
+
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Удаляем класс 'active' у всех кнопок
+                    toggleButtons.forEach(btn => btn.classList.remove('active'));
+                    // Добавляем класс 'active' к нажатой кнопке
+                    this.classList.add('active');
+
+                    // Определяем, какой раздел нужно показать
+                    const targetId = this.getAttribute('data-target');
+
+                    // Скрываем все разделы
+                    departmentSections.forEach(section => {
+                        section.classList.add('hidden');
+                    });
+
+                    // Показываем нужный раздел
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.classList.remove('hidden');
+                    }
+                });
+            });
+
+            // Изначально показываем первый раздел (если он не скрыт)
+            const firstButton = document.querySelector('.department-toggle-button.active');
+            if (firstButton) {
+                const targetId = firstButton.getAttribute('data-target');
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.remove('hidden');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зеленые школы - ДДиМ "Золак"</title>
+    <link rel="stylesheet" href="../style.css"> <!-- Подключаем общий CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Стили для страницы "Зеленые школы" */
+        .green-schools-section {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .green-schools-section h3 {
+            color: var(--primary-color);
+            font-family: var(--heading-font);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 25px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .green-schools-section h4 {
+            font-family: var(--heading-font);
+            font-size: 1.5rem;
+            color: var(--dark-bg);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color-light);
+            padding-bottom: 5px;
+        }
+
+        .green-schools-main-image {
+            width: 100%;
+            max-width: 800px;
+            /* Ограничиваем максимальную ширину */
+            height: auto;
+            display: block;
+            margin: 0 auto 35px auto;
+            border-radius: 8px;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid var(--border-color-light);
+        }
+
+        .content-block {
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 1px solid var(--border-color-light);
+            border-radius: 6px;
+            background-color: #f9f9f9;
+        }
+
+        .content-block p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .content-block ul {
+            list-style-type: disc;
+            padding-left: 25px;
+            margin-top: 15px;
+        }
+
+        .content-block ul li {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+
+        .content-block ul li a {
+            /* Стили для ссылок внутри списка направлений */
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .content-block ul li a:hover {
+            text-decoration: underline;
+            color: var(--primary-color);
+        }
+
+        .content-block>a {
+            /* Стили для прямых ссылок в блоках */
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .content-block>a:hover {
+            text-decoration: underline;
+            color: var(--primary-color);
+        }
+
+        /* Стили для секции "Итоги конкурса" */
+        .results-section {
+            background-color: #f0f8f0;
+            /* Светло-зеленый фон для раздела */
+            border-left: 5px solid var(--primary-color);
+            padding: 25px;
+        }
+
+        .results-section h4 {
+            color: var(--primary-color);
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-top: 0;
+        }
+
+        .results-section p {
+            margin-bottom: 15px;
+        }
+
+        .collapsible-content {
+            display: none;
+            /* Скрыто по умолчанию */
+            margin-top: 15px;
+        }
+
+        .toggle-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle-button:hover {
+            background-color: var(--dark-bg);
+        }
+
+        /* Стили для раздела "Поделиться страницей" */
+        .share-section {
+            margin-top: 40px;
+            text-align: right;
+            border-top: 1px dashed var(--border-color-light);
+            padding-top: 20px;
+        }
+
+        .share-section span {
+            font-weight: 600;
+            color: var(--dark-bg);
+            margin-right: 10px;
+        }
+
+        .share-section a {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-left: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .share-section a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+
+            .green-schools-section,
+            .content-block,
+            .results-section {
+                padding: 20px;
+            }
+
+            .green-schools-section h3 {
+                font-size: 1.6rem;
+                margin-bottom: 20px;
+            }
+
+            .green-schools-main-image {
+                margin-bottom: 25px;
+            }
+
+            .content-block p,
+            .content-block ul li {
+                font-size: 0.95rem;
+            }
+
+            .toggle-button {
+                width: 100%;
+                text-align: center;
+            }
+
+            .share-section {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Верхняя панель (копируется со всех страниц) -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info-top">
+                <span><i class="fas fa-map-marker-alt"></i> г. Минск, пр-т Партизанский, 146</span>
+                <span><i class="fas fa-phone"></i> +375(17)258-22-04</span>
+                <span><i class="fas fa-envelope"></i> zolak@minskedu.gov.by</span>
+            </div>
+            <div class="social-links-top">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Шапка сайта (копируется со всех страниц) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo-title">
+                <img src="../images/logo.png" alt="Логотип ДПМ Золак" class="site-logo">
+                <div class="site-name">
+                    <h2>ДДиМ "Золак"</h2>
+                    <p>Дворец Детей и Молодежи</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../one-window.html">Одно окно</a></li>
+                    <li><a href="../about.html" class="active">Об учреждении</a></li>
+                    <li><a href="../life.html">Жизнь учреждения</a></li>
+                    <li><a href="../students.html">Обучающимся</a></li>
+                    <li><a href="../parents.html">Родителям</a></li>
+                    <li><a href="../teachers.html">Педагогам</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <!-- Основной контент страницы -->
+    <main>
+        <section class="page-header-section">
+            <div class="container">
+                <h1>Зеленые школы</h1>
+                <nav class="breadcrumb">
+                    <a href="../index.html">Главная</a> / <a href="../about.html">Об учреждении</a> / Зеленые школы
+                </nav>
+            </div>
+        </section>
+
+        <section class="content-section section-padding">
+            <div class="container">
+                <div class="green-schools-section">
+                    <h3>Образовательный проект "Зеленые школы"</h3>
+
+                    <img src="../images/green_schools/main_photo.jpg" alt="Дети участвуют в проекте Зеленые школы"
+                        class="green-schools-main-image">
+
+                    <div class="content-block">
+                        <h4>Нормативная и правовая документация</h4>
+                        <p>Здесь вы можете ознакомиться с основными документами, регулирующими реализацию проекта
+                            "Зеленые школы":</p>
+                        <ul>
+                            <li><a href="#" target="_blank">Положение о проекте "Зеленые школы" (ссылка на документ)</a>
+                            </li>
+                            <li><a href="#" target="_blank">Методические рекомендации по реализации (ссылка на
+                                    документ)</a></li>
+                            <!-- Добавьте другие документы по мере необходимости -->
+                        </ul>
+                    </div>
+
+                    <div class="content-block">
+                        <h4>Направления реализации проекта:</h4>
+                        <ul>
+                            <li><a href="#">Направление 1: <strong>Биоразнообразие</strong></a></li>
+                            <li><a href="#">Направление 2: <strong>Энергосбережение</strong></a></li>
+                            <li><a href="#">Направление 3: <strong>Водосбережение</strong></a></li>
+                            <li><a href="#">Направление 4: <strong>Обращение с отходами</strong></a></li>
+                            <li><a href="#">Направление 5: <strong>Качество атмосферного воздуха</strong></a></li>
+                            <li><a href="#">Направление 6: <strong>Информационно-экологические мероприятия по работе с
+                                        местными сообществами</strong></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="content-block">
+                        <h4>Отчет о реализации проекта</h4>
+                        <p>Ознакомьтесь с подробным отчетом ДДиМ «Золак» г.Минска по реализации образовательного проекта
+                            «Зеленые школы» за текущий период.</p>
+                        <p><a href="#" target="_blank"><i class="fas fa-file-alt"></i> Скачать отчет ДДиМ «Золак»</a>
+                        </p>
+                    </div>
+
+                    <div class="content-block results-section">
+                        <h4>ИТОГИ районного этапа республиканского конкурса экологических проектов «Зеленая школа»</h4>
+                        <p>Районный этап республиканского конкурса экологических проектов «Зеленая школа» проводился с
+                            24 февраля по 16 августа 2021 в соответствии с письмом Министерства образования Республики
+                            Беларусь. В конкурсе принимали участие обучающиеся учреждений общего среднего и
+                            дополнительного образования детей и молодежи Заводского района г.Минска.</p>
+
+                        <div id="collapsibleResults" class="collapsible-content">
+                            <p><strong>Цель и задачи конкурса:</strong></p>
+                            <ul>
+                                <li>формирование высокой экологической культуры обучающихся, направленную на сбережение
+                                    природных ресурсов и охрану окружающей среды;</li>
+                                <li>формирование осознанного понимания основных экологических ценностей (чистый воздух,
+                                    чистая вода, богатство видов флоры и фауны, благоприятный климат, красота
+                                    ландшафта);</li>
+                                <li>формирование экологически ориентированного поведения обучающихся через реализацию
+                                    практических дел, улучшающих качество окружающей среды;</li>
+                                <li>активизация деятельности учреждений образования, направленной на решение вопросов
+                                    экологического и нравственного воспитания обучающихся;</li>
+                                <li>отбор и популяризация лучших идей и практик в области энергосбережения, сохранения
+                                    ресурсов, сохранения природного наследия, создания экологически-дружественной
+                                    окружающей среды.</li>
+                            </ul>
+                            <p>Итоги можно посмотреть <a href="#" target="_blank">здесь</a></p>
+                        </div>
+                        <button class="toggle-button"
+                            onclick="toggleContent('collapsibleResults', this)">Подробнее</button>
+                    </div>
+
+                    <div class="share-section">
+                        <span>Поделиться страницей:</span>
+                        <a href="#"
+                            onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;"
+                            aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"
+                            onclick="window.open('https://vk.com/share.php?url=' + encodeURIComponent(window.location.href), 'vk-share-dialog', 'width=626,height=436'); return false;"
+                            aria-label="Share on VK"><i class="fab fa-vk"></i></a>
+                        <a href="#"
+                            onclick="window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title), '_blank'); return false;"
+                            aria-label="Share on Telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <!-- Добавьте другие кнопки социальных сетей по необходимости -->
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер (копируется со всех страниц) -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 ДДиМ "Золак". Все права защищены.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="../about.html" class="active">Об учреждении</a></li>
+                    <li><a href="../one-window.html">Одно окно</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                    <li><a href="../one-window/privacy_policy.html">Политика конфиденциальности</a></li>
+                </ul>
+            </nav>
+            <div class="social-links-footer">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипт для сворачиваемого контента -->
+    <script>
+        function toggleContent(id, button) {
+            const content = document.getElementById(id);
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+                button.textContent = "Свернуть";
+            } else {
+                content.style.display = "none";
+                button.textContent = "Подробнее";
+            }
+        }
+    </script>
+    <!-- <script src="../script.js"></script> -->
+</body>
+
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Медиа-центр - ДДиМ "Золак"</title>
+    <link rel="stylesheet" href="../style.css"> <!-- Подключаем общий CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Стили для страницы "Медиа-центр" */
+        .media-center-section {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .media-center-section h3 {
+            color: var(--primary-color);
+            font-family: var(--heading-font);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .media-center-section .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark-bg);
+            margin-bottom: 15px;
+            margin-top: 25px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--border-color-light);
+        }
+
+        .media-center-section .intro-text {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .media-center-section .content-block p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .media-center-section .content-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Стиль для ссылок внутри текста */
+        .text-link {
+            color: var(--primary-color);
+            /* Цвет ссылки */
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease, text-decoration 0.3s ease;
+        }
+
+        .text-link:hover {
+            color: var(--primary-hover-color);
+            text-decoration: underline;
+            /* Подчеркивание при наведении */
+        }
+
+        /* Стиль для отдельной кнопки-ссылки */
+        .cta-button {
+            display: inline-block;
+            /* Или block, если нужна на всю ширину */
+            background-color: var(--secondary-color);
+            /* Другой цвет для CTA */
+            color: #fff;
+            /* Белый текст */
+            font-family: var(--heading-font);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            margin-top: 20px;
+            /* Отступ сверху */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: var(--shadow-medium);
+            text-align: center;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-hover-color);
+            transform: translateY(-3px);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        /* Иконка для Telegram */
+        .cta-button .fab.fa-telegram-plane {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Верхняя панель (копируется со всех страниц) -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info-top">
+                <span><i class="fas fa-map-marker-alt"></i> г. Минск, пр-т Партизанский, 146</span>
+                <span><i class="fas fa-phone"></i> +375(17)258-22-04</span>
+                <span><i class="fas fa-envelope"></i> zolak@minskedu.gov.by</span>
+            </div>
+            <div class="social-links-top">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Шапка сайта (копируется со всех страниц) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo-title">
+                <img src="../images/logo.png" alt="Логотип ДПМ Золак" class="site-logo">
+                <div class="site-name">
+                    <h2>ДДиМ "Золак"</h2>
+                    <p>Дворец Детей и Молодежи</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../one-window.html">Одно окно</a></li>
+                    <li><a href="../about.html" class="active">Об учреждении</a></li>
+                    <li><a href="../life.html">Жизнь учреждения</a></li>
+                    <li><a href="../students.html">Обучающимся</a></li>
+                    <li><a href="../parents.html">Родителям</a></li>
+                    <li><a href="../teachers.html">Педагогам</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <!-- Основной контент страницы -->
+    <main>
+        <section class="page-header-section">
+            <div class="container">
+                <h1>Медиа-центр</h1>
+                <nav class="breadcrumb">
+                    <a href="../index.html">Главная</a> / <a href="../about.html">Об учреждении</a> / Медиа-центр
+                </nav>
+            </div>
+        </section>
+
+        <section class="content-section section-padding">
+            <div class="container">
+                <div class="media-center-section">
+                    <h3>Медиа-центр <<Медиа hub>></h3>
+
+                    <p class="intro-text">
+                        Добро пожаловать в наш Медиа-центр "Медиа hub"! Здесь мы делимся новостями, событиями и
+                        творческими работами наших воспитанников и педагогов.
+                    </p>
+
+                    <!-- Текст с вложенными ссылками -->
+                    <div class="content-block">
+                        <h4 class="section-title">О Медиа-центре</h4>
+                        <p>
+                            В нашем учреждении функционирует медиа-центр <<Медиа hub>>, основной задачей которого
+                                является освещение жизни Дворца, создание медиа-контента и развитие творческих навыков
+                                обучающихся в области журналистики, фотографии и видеопроизводства.
+                        </p>
+                        <p>
+                            Мы стремимся предоставлять актуальную и интересную информацию о деятельности нашего
+                            учреждения. Более подробную информацию о работе медиа-центра вы можете найти в <a
+                                href="https://drive.google.com/file/d/1uEenVCWRqeFnkFfi439osofRYtAaOwLO/view?usp=sharing"
+                                class="text-link">Положении о медиацентре &lt;&lt;Медиа hub&gt;&gt;</a>.
+                        </p>
+                        <p>
+                            Присоединяйтесь к нам в социальных сетях, чтобы быть в курсе всех событий!
+                        </p>
+                    </div>
+
+                    <!-- Кнопка-ссылка на Telegram -->
+                    <a href="https://t.me/+SSzAjjVNDxxjZmEy" class="cta-button" target="_blank">
+                        <i class="fab fa-telegram-plane"></i>
+                        Перейти в Телеграмм-канал медиацентра &lt;&lt;Медиа hub&gt;&gt;
+                    </a>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер (копируется со всех страниц) -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 ДДиМ "Золак". Все права защищены.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="../about.html" class="active">Об учреждении</a></li>
+                    <li><a href="../one-window.html">Одно окно</a></li>
+                    <li><a href="../services.html">Сервисы</a></li>
+                    <li><a href="../one-window/privacy_policy.html">Политика конфиденциальности</a></li>
+                </ul>
+            </nav>
+            <div class="social-links-footer">
+                <a href="https://www.facebook.com/zolakdvorec/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zolak_officialpage/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zolakby" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.youtube.com/channel/UC2mnf5ds9jd2cEdE5CPJZMg?view_as=subscriber" target="_blank"
+                    aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/zolaklive" target="_blank" aria-label="Telegram"><i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript для обработки ссылок
+        document.addEventListener('DOMContentLoaded', function () {
+            // Обработка ссылок внутри текста
+            const textLinks = document.querySelectorAll('.text-link');
+            textLinks.forEach(link => {
+                if (link.getAttribute('href') === '#') {
+                    link.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        alert('Ссылка на "Положение о медиацентре" пока не добавлена. Пожалуйста, обратитесь к администрации.');
+                    });
+                }
+            });
+
+            // Обработка кнопки-ссылки
+            const ctaButton = document.querySelector('.cta-button');
+            if (ctaButton && ctaButton.getAttribute('href') === '#') {
+                ctaButton.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    alert('Ссылка на Телеграмм-канал пока не добавлена. Пожалуйста, обратитесь к администрации.');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
