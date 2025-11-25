@@ -38,27 +38,37 @@
 
     <!-- Шапка сайта -->
     <header class="site-header">
-        <div class="container">
-            <div class="logo-title">
-                <img src="images/logo.png" alt="Логотип ДПМ Золак" class="site-logo">
-                <div class="site-name">
-                    <h2>ДДиМ "Золак"</h2>
-                    <p>Дворец Детей и Молодежи</p>
-                </div>
-            </div>
-            <nav class="main-nav">
-                <ul class="nav-list">
-                    <li><a href="one-window.html">Одно окно</a></li>
+     <!-- Этот HTML-код обычно помещается внутри вашего <header> или в области навигации -->
+
+<div class="mobile-menu-container">
+    <!-- Ваш логотип или название сайта (опционально, но часто рядом с меню) -->
+    <a href="/" class="site-branding">
+        <img src="/path/to/your/logo.png" alt="Логотип" class="logo-mobile">
+        <!-- <span class="site-title-mobile">Название Сайта</span> -->
+    </a>
+
+    <!-- Кнопка-гамбургер -->
+    <button class="mobile-menu-toggle" aria-label="Открыть мобильное меню">
+        ☰ <!-- Это HTML-сущность для символа гамбургера (☰) -->
+        <!-- Альтернатива: если вы используете Font Awesome, можно так: -->
+        <!-- <i class="fas fa-bars"></i> -->
+    </button>
+</div>
+
+<!-- Это ваш список ссылок меню, который будет скрыт по умолчанию на мобильных -->
+<!-- и показан при нажатии на кнопку-гамбургер с помощью CSS и JavaScript. -->
+<nav class="mobile-nav-menu">
+    <ul class="mobile-nav-list">
+        <li><a href="one-window.html">Одно окно</a></li>
                     <li><a href="about.html">Об учреждении</a></li>
                     <li><a href="life.html">Жизнь учреждения</a></li>
                     <li><a href="students.html">Обучающимся</a></li>
                     <li><a href="parents.html">Родителям</a></li>
                     <li><a href="teachers.html">Педагогам</a></li>
                     <li><a href="services.html">Сервисы</a></li>
-                </ul>
-            </nav>
-            <div class="mobile-menu-toggle">☰</div>
-        </div>
+        <!-- Добавьте сюда остальные пункты меню -->
+    </ul>
+</nav>
     </header>
 
     <!-- Секция Hero -->
@@ -141,3 +151,4 @@
 </body>
 
 </html>
+
