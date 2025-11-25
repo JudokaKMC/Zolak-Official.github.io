@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Об Учреждении - ДДиМ "Золак"</title>
+    <title>ДДиМ "Золак" - Главная</title>
     <link rel="stylesheet" href="style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
@@ -49,7 +49,7 @@
             <nav class="main-nav">
                 <ul class="nav-list">
                     <li><a href="one-window.html">Одно окно</a></li>
-                    <li><a href="about.html" class="active">Об учреждении</a></li>
+                    <li><a href="about.html">Об учреждении</a></li>
                     <li><a href="life.html">Жизнь учреждения</a></li>
                     <li><a href="students.html">Обучающимся</a></li>
                     <li><a href="parents.html">Родителям</a></li>
@@ -61,52 +61,55 @@
         </div>
     </header>
 
-    <!-- Основной контент страницы -->
-    <main>
-        <section class="page-header-section">
-            <div class="container">
-                <h1>Об учреждении</h1>
-                <nav class="breadcrumb">
-                    <a href="index.html">Главная</a> / Об учреждении
-                </nav>
-            </div>
-        </section>
+    <!-- Секция Hero -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>ДДиМ "Золак" - Ваш центр творчества и развития!</h1>
+            <p>Откройте мир новых возможностей, талантов и ярких событий.</p>
+            <a href="about.html" class="btn btn-primary">Узнать больше</a>
+        </div>
+    </section>
 
-        <section class="content-section section-padding">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Наш Дворец</h2>
+    <!-- Секция с контактной информацией -->
+    <section class="contact-info-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Наш адрес и контакты</h2>
+            </div>
+            <div class="contact-details">
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Адрес:</strong> г. Минск, пр-т Партизанский, 146</p>
+                <p><i class="fas fa-phone"></i> <strong>Телефон:</strong> +375(17)258-22-04</p>
+                <p><i class="fas fa-envelope"></i> <strong>Почта:</strong> zolak@minskedu.gov.by</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция с примерами изображений -->
+    <section class="image-examples-section section-padding bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Наш Дворец</h2>
+            </div>
+            <div class="image-grid">
+                <div class="image-item">
+                    <img src="images/gallery_img1.jpg" alt="Здание ДДиМ Золак">
+                    <p>Здание ДДиМ</p>
                 </div>
-                <div class="links-grid">
-                    <a href="about/contacts_schedule.html" class="link-card"> Контакты, режим работы</a>
-                    <a href="about/structure_functions.html" class="link-card"> Структура, задачи и функции</a>
-                    <a href="about/leadership.html" class="link-card"> Руководство</a>
-                    <a href="about/state_symbols.html" class="link-card"> Государственная символика</a>
-                    <a href="about/rating_portal.html" class="link-card"> Портал рейтинговой оценки</a>
-                    <a href="about/trade_union.html" class="link-card"> Профсоюз</a>
-                    <a href="about/belarus_movement.html" class="link-card"> "Белая Русь"</a>
-                    <a href="about/resource_center.html" class="link-card"> Ресурсный центр</a>
-                    <a href="about/BRPO.html" class="link-card"> БРПО</a>
-                    <a href="about/ecology_education.html" class="link-card"> Районная ресурсная площадка по
-                        экологическому воспитанию</a>
-                    <a href="about/methodological_center.html" class="link-card"> Опорная методическая площадка</a>
-                    <a href="about/media_center.html" class="link-card"> Медиацентр</a>
-                    <a href="about/international_projects.html" class="link-card"> Международные проекты</a>
-                    <a href="about/creativity_gallery.html" class="link-card"> Галерея творчества</a>
-                    <a href="about/stars_alley.html" class="link-card"> Аллея звезд</a>
-                    <a href="about/zolak_in_faces.html" class="link-card"> "Золак" в лицах</a>
-                    <a href="about/vacancies.html" class="link-card"> Вакансии</a>
-                    <a href="about/history_zolak.html" class="link-card"> Из истории "Золока"</a>
-                    <a href="about/green_schools.html" class="link-card"> Зеленные школы</a>
-                    <a href="about/institution_profile.html" class="link-card"> Визитка учреждения</a>
+                <div class="image-item">
+                    <img src="images/gallery_img2.jpg" alt="Творческие занятия">
+                    <p>Творческие занятия</p>
                 </div>
-                <div class="text-center mt-40">
-            
-                        style="max-width: 700px; height: auto; border-radius: var(--card-border-radius); box-shadow: var(--shadow-light);">
+                <div class="image-item">
+                    <img src="images/gallery_img3.jpg" alt="Концертная деятельность">
+                    <p>Концертная деятельность</p>
+                </div>
+                <div class="image-item">
+                    <img src="images/gallery_img4.jpg" alt="Спортивные секции">
+                    <p>Спортивные секции</p>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Футер -->
     <footer class="site-footer">
@@ -114,10 +117,10 @@
             <p>&copy; 2024 ДДиМ "Золак". Все права защищены.</p>
             <nav class="footer-nav">
                 <ul>
-                    <li><a href="about.html" class="active">Об учреждении</a></li>
+                    <li><a href="about.html">Об учреждении</a></li>
                     <li><a href="one-window.html">Одно окно</a></li>
                     <li><a href="services.html">Сервисы</a></li>
-                    <li><a href="one-window/privacy_policy.html">Политика конфиденциальности</a></li>
+                    <li><a href="#">Политика конфиденциальности</a></li>
                 </ul>
             </nav>
             <div class="social-links-footer">
@@ -136,6 +139,5 @@
 
     <script src="script.js"></script>
 </body>
-
 
 </html>
