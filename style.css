@@ -639,4 +639,97 @@ ul { list-style: none; padding: 0; margin: 0; }
     .service-item img { max-width: 120px; height: 120px; }
     .service-item h3 { font-size: 1.3rem; }
 }
+.hamburger-menu {
+    display: block; /* Или inline-block, в зависимости от контекста */
+    width: 30px;
+    height: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative; /* Для позиционирования внутренних элементов */
+    z-index: 10; /* Чтобы был поверх другого контента */
+}
+
+.hamburger-icon,
+.hamburger-icon::before,
+.hamburger-icon::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #333; /* Цвет линий */
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger-icon {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hamburger-icon::before {
+    top: -8px;
+}
+
+.hamburger-icon::after {
+    bottom: -8px;
+}
+
+/* Состояние "крестик" (когда меню открыто) - обычно управляется JavaScript */
+.hamburger-menu.is-active .hamburger-icon {
+    background-color: transparent; /* Средняя линия исчезает */
+}
+
+.hamburger-menu.is-active .hamburger-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.hamburger-menu.is-active .hamburger-icon::after {
+    bottom: 0;
+    transform: rotate(-45deg);
+}
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none; /* По умолчанию меню скрыто */
+    position: absolute; /* Или fixed, в зависимости от дизайна */
+    top: 100%; /* Или другое значение, чтобы меню было под хэдером */
+    left: 0;
+    width: 100%;
+    background-color: #f9f9f9; /* Фон меню */
+    z-index: 9;
+}
+
+.nav-menu li {
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #eee; /* Разделитель между пунктами */
+}
+
+.nav-menu li:last-child a {
+    border-bottom: none;
+}
+
+/* Показываем меню, когда у родителя есть класс 'is-active' */
+.hamburger-menu.is-active + .nav-menu {
+    display: block;
+}
+
+/* Для мобильных устройств, где меню может быть полным экраном */
+@media (max-width: 768px) { /* Примерный брейкпоинт для мобильных */
+    .nav-menu {
+        /* Дополнительные стили для мобильного вида, если нужно */
+        /* Например, position: fixed; */
+    }
+}
 
