@@ -1,64 +1,70 @@
-// Функция для переключения видимости контента
-function toggleContent(contentId, button) {
-    const content = document.getElementById(contentId);
-    if (content) {
-        const isHidden = content.style.display === "none" || content.style.display === "";
-        
-        // Скрываем весь предыдущий открытый контент
-        document.querySelectorAll('.collapsible-content').forEach(item => {
-            if (item !== content && item.style.display === "block") {
-                item.style.display = "none";
-                // Находим соответствующую кнопку и меняем текст
-                const correspondingButton = item.nextElementSibling; 
-                if (correspondingButton && correspondingButton.classList.contains('toggle-button')) {
-                    correspondingButton.textContent = "Подробнее";
-                }
+// Мобильное меню
+document.addEventListener('DOMContentLoaded', function () {
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const body = document.body;
+
+    // Открытие/закрытие мобильного меню
+    hamburger.addEventListener('click', function () {
+        this.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        body.classList.toggle('no-scroll');
+    });
+
+    // Закрытие меню при клике на ссылку
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            body.classList.remove('no-scroll');
+        });
+    });
+
+    // Закрытие меню при клике вне его области
+    document.addEventListener('click', function (e) {
+        if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            body.classList.remove('no-scroll');
+        }
+    });
+
+    // Анимация появления элементов при скролле
+    const animateOnScroll = function () {
+        const elements = document.querySelectorAll('.feature-card, .gallery-item');
+
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.2;
+
+            if (elementPosition < screenPosition) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
             }
         });
+    };
 
-        // Переключаем текущий контент
-        if (isHidden) {
-            content.style.display = "block";
-            button.textContent = "Свернуть"; // Меняем текст кнопки на "Свернуть"
-        } else {
-            content.style.display = "none";
-            button.textContent = "Подробнее"; // Меняем текст кнопки обратно на "Подробнее"
-        }
-    }
-}
+    // Установка начального состояния для анимации
+    const features = document.querySelectorAll('.feature-card');
+    const galleryItems = document.querySelectorAll('.gallery-item');
 
-// Функция для мобильного меню
-document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.querySelector('.mobile-menu-toggle');
-    const navList = document.querySelector('.main-nav .nav-list');
+    features.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
 
-    if (menuToggle && navList) {
-        menuToggle.addEventListener('click', () => {
-            navList.classList.toggle('active'); // Переключаем класс 'active' для показа/скрытия меню
-            menuToggle.classList.toggle('open'); // Опционально: для изменения вида самой кнопки меню
-        });
+    galleryItems.forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
 
-        // Закрываем меню при клике на ссылку внутри него (для SPA, если используется)
-        // Или просто для лучшего UX, чтобы меню схлопывалось после выбора пункта
-        navList.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (navList.classList.contains('active')) {
-                    navList.classList.remove('active');
-                    menuToggle.classList.remove('open');
-                }
-            });
-        });
-    }
+    // Запуск анимации при загрузке и скролле
+    window.addEventListener('load', animateOnScroll);
+    window.addEventListener('scroll', animateOnScroll);
 });
 
-// Сброс состояния кнопок при загрузке страницы, чтобы все было в исходном состоянии
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.toggle-button').forEach(button => {
-        button.textContent = "Подробнее";
-    });
-    document.querySelectorAll('.collapsible-content').forEach(content => {
-        content.style.display = "none";
-    });
-});
 
 
